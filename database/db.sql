@@ -1,5 +1,12 @@
-CREATE DATABASE arcadiaserverDB;
-USE arcadiaserverDB;
+DROP DATABASE IF EXISTS arcadiaDB ;
+CREATE DATABASE arcadiaDB;
+USE arcadiaDB;
+
+CREATE TABLE rol
+(
+	rol_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    rol_name VARCHAR(20) NOT NULL
+);
 
 CREATE TABLE user
 (
@@ -7,7 +14,7 @@ CREATE TABLE user
     password VARCHAR(25) NOT NULL,
     name VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
-    role VARCHAR(20) NOT NULL,
+    rol INT NOT NULL,
     FOREIGN KEY (rol) REFERENCES rol(rol_id)
 );
 
@@ -15,12 +22,6 @@ CREATE TABLE image
 (
 	image_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     image_path VARCHAR(50)
-);
-
-CREATE TABLE rol
-(
-	rol_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    rol_name VARCHAR(20)
 );
 
 CREATE TABLE animal

@@ -135,7 +135,7 @@ INSERT INTO service (name,description,image_id) VALUES (
 "Profitez d'une expérience culinaire unique dans notre restaurant à thème “Le Repas Sauvage”. Nous offrons une variété de plats inspirés de la cuisine internationale, utilisant des ingrédients frais et locaux.",
 53);
 
-INSERT INTO user (username,password,name,lastname,role) VALUES (
+INSERT INTO user (username,password,name,lastname,rol) VALUES (
 "josesanchez@",
 "",
 "José",
