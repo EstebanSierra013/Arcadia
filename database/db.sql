@@ -31,7 +31,7 @@ CREATE TABLE animal
     species VARCHAR(25) NOT NULL,
     habitat_id INT NOT NULL,
     image_id INT NULL,
-    status VARCHAR(10) NULL,
+    status VARCHAR(10) DEFAULT "PE",
     FOREIGN KEY (image_id) REFERENCES image(image_id)
 );
 
