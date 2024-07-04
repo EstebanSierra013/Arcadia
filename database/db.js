@@ -8,11 +8,12 @@ const dbConnector = mariadb.createPool({
 });
 
 export class DBConnector {
-  static async query(param) {  
+  static async query(query,param=null) {  
+    console.log(query,param);
     var res = null;  
     try {
       var connection = await dbConnector.getConnection();
-      res = connection.execute(param);
+      res = connection.execute(query,param);
       connection.end;
     } catch (error){
       console.log(err);

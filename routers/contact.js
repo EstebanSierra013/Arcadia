@@ -4,4 +4,4 @@ import { ContactController } from "../controllers/contact.js"
 export const contactRouter = Router();
 
 contactRouter.get('/',ContactController);
-contactRouter.post('/',ContactController);
+contactRouter.post('/',ContactController.create);

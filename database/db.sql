@@ -86,9 +86,17 @@ CREATE TABLE review
 	review_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     pseudo VARCHAR(50) NOT NULL,
     comment VARCHAR(250) NOT NULL,
-    isVisible BOOL
+    isVisible BOOL DEFAULT FALSE
 );
 
+CREATE TABLE contact
+(
+	contact_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    mail VARCHAR(50) NOT NULL,
+    title VARCHAR(25) NOT NULL,
+    description VARCHAR(250) NOT NULL,
+    isReplied BOOL DEFAULT FALSE
+);
 
 
 
