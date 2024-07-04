@@ -6,12 +6,16 @@ import { habitatRouter } from './routers/habitats.js';
 import { serviceRouter } from './routers/services.js';
 import { animalRouter } from './routers/animals.js';
 import { contactRouter } from './routers/contact.js';
+import dbArcadia from "./database/db.js";
+
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 app.use(json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+dbArcadia.connect()
 
 app.use('/habitats',habitatRouter);
 app.use('/services',serviceRouter);

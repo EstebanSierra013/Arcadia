@@ -1,10 +1,10 @@
-import { DBConnector } from "../database/db.js";
+import dbArcadia from "../database/db.js";
 
 export class ContactModel {
   static async create({ input }){
     const { mail, title, description } = input;
     try {
-      await DBConnector.query(
+      await dbArcadia.query(
         'INSERT INTO contact (mail, title, description) VALUES (?, ?, ?);',
         [mail, title, description]
       )

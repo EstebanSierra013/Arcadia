@@ -1,8 +1,8 @@
-import { DBConnector } from "../database/db.js";
+import dbArcadia from "../database/db.js";
 
 export class HabitatModel {
   static async getAll(){
-    const habitats = await DBConnector.query('SELECT * FROM habitat;');
+    const habitats = await dbArcadia.query('SELECT * FROM habitat;');
     return habitats;
   }
 
@@ -10,7 +10,7 @@ export class HabitatModel {
     const { name, description, habitat_comment, image_id } = input;
     console.log(typeof(image_id))
     try {
-      await DBConnector.query(
+      await dbArcadia.query(
         'INSERT INTO habitat ( name, description, habitat_comment, image_id ) VALUES (?, ?, ?, ?);',
         [name, description, habitat_comment, parseInt(image_id,10)]
       )
@@ -22,7 +22,7 @@ export class HabitatModel {
 
   static async delete({ id }){
     try {
-      const { affectedRows } = await DBConnector.query(
+      const { affectedRows } = await dbArcadia.query(
         'DELETE FROM habitat WHERE habitat_id = ?;',
         [id]
       )
