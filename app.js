@@ -1,6 +1,6 @@
-import express, { json, urlencoded} from 'express';
-import bodyParser from 'body-parser';
+import express, { json} from 'express';
 import 'dotenv/config'
+import multer from 'multer'
 
 import { habitatRouter } from './routers/habitats.js';
 import { serviceRouter } from './routers/services.js';
@@ -15,7 +15,9 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 app.use(json());
-app.use(bodyParser.urlencoded({extended: true}));
+var upload = multer();
+app.use(upload.array()); 
+app.use(express.static('public'));
 
 dbArcadia.connect()
 

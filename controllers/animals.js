@@ -1,4 +1,5 @@
 import { AnimalModel } from "../models/animal.js";
+import { validateAnimal } from "../helpers/schemas.js";
 
 export class AnimalController {
   static async getAll (req, res){
@@ -7,7 +8,9 @@ export class AnimalController {
   }
 
   static async create (req, res){
-    const input = req.body;
+    console.log(req.body)
+    const input = validateAnimal(req.body);
+    console.log(input)
     const result = await AnimalModel.create({ input });
     if (result === false) {
       return res.status(404).json({ message: 'Animal not created' });
