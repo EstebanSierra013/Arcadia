@@ -29,6 +29,7 @@ class DBServer {
   }
   
   async query(query,param=null) {  
+    console.log(query,param)
     let res = null;  
     try {      
       res = this.db.execute(query,param);

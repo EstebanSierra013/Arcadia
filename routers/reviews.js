@@ -3,5 +3,5 @@ import { ReviewController } from "../controllers/review.js"
 
 export const reviewRouter = Router();
 
-reviewRouter.get('/',ReviewController);
-reviewRouter.post('/',ReviewController);
+reviewRouter.get('/',ReviewController.getAll);
+reviewRouter.post('/',ReviewController.create);
