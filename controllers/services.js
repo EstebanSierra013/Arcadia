@@ -1,4 +1,3 @@
-import { validateService } from "../helpers/schemas.js";
 import { ServiceModel } from "../models/service.js";
 
 export class ServiceController {
@@ -8,12 +7,14 @@ export class ServiceController {
   }
 
   static async create(req, res) {
-    const input = validateService(req.body);
-    const result = await ServiceModel.create({ input });
-    if (result === false) {
-      return res.status(404).json({ message: "Service not created" });
-    }
-    return res.status(201).json({ message: "Service created" });
+    const input = req.body;
+    try{
+      const {result} = await ServiceModel.create({ input });
+      console.log(result)
+      return res.status(201).json({ message: "Service created", service_id});
+    }catch(err){
+      return res.status(404).json({... err})
+    }    
   }
 
   static async delete(req, res) {

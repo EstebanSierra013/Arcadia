@@ -9,21 +9,20 @@ import { contactRouter } from './routers/contact.js';
 import dbArcadia from "./database/db.js";
 import { reportRouter } from './routers/reports.js';
 import { reviewRouter } from './routers/reviews.js';
+import { profileRouter } from './routers/profile.js';
 
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-app.use(json());
-var upload = multer();
-app.use(upload.array()); 
+app.use(json()); 
 app.use(express.static('public'));
 
 dbArcadia.connect()
 
 app.use('/habitats',habitatRouter);
 app.use('/services',serviceRouter);
-app.use('/animals',animalRouter);
+app.use('/profile',profileRouter);
 app.use('/contact',contactRouter);
 app.use('/reports',reportRouter);
 app.use('/reviews',reviewRouter);

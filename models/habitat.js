@@ -8,15 +8,14 @@ export class HabitatModel {
 
   static async create({ input }){
     const { name, description, habitat_comment, image_id } = input;
-    console.log(typeof(image_id))
     try {
-      await dbArcadia.query(
+      const result = await dbArcadia.query(
         'INSERT INTO habitat ( name, description, habitat_comment, image_id ) VALUES (?, ?, ?, ?);',
-        [name, description, habitat_comment, parseInt(image_id,10)]
+        [name, description, habitat_comment, image_id]
       )
-    } catch (e) {
-      console.log(e)
-      throw new Error('Error creating habitat')
+    } catch (err) {   
+      console.log(err)
+      throw err
     }
   }
 

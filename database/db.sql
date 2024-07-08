@@ -5,7 +5,7 @@ USE arcadiaDB;
 CREATE TABLE rol
 (
 	rol_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    rol_name VARCHAR(20) NOT NULL
+    rol_name VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE user
@@ -21,17 +21,17 @@ CREATE TABLE user
 CREATE TABLE image
 (
 	image_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    image_path VARCHAR(50)
+    image_path VARCHAR(50) UNIQUE
 );
 
 CREATE TABLE animal
 (
 	animal_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(35) NOT NULL,
+    name VARCHAR(35) NOT NULL UNIQUE,
     species VARCHAR(25) NOT NULL,
     habitat_id INT NOT NULL,
     image_id INT NULL,
-    status VARCHAR(10) DEFAULT "PE",
+    status INT(2) DEFAULT 0,
     FOREIGN KEY (image_id) REFERENCES image(image_id)
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE veterinary_report
     food  VARCHAR(25) NOT NULL,
 	quantity FLOAT NOT NULL,
 	created_by VARCHAR(50) NOT NULL,
-    animal_id INT,
+    animal_id INT NOT NULL,
     FOREIGN KEY (animal_id) REFERENCES animal(animal_id),
     FOREIGN KEY (created_by) REFERENCES user(username)
 );
@@ -63,7 +63,7 @@ CREATE TABLE veterinary_report
 CREATE TABLE habitat
 (
 	habitat_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(25) NOT NULL,
+    name VARCHAR(25) NOT NULL UNIQUE,
     description TEXT NOT NULL,
     habitat_comment VARCHAR(50),
     image_id INT NULL,
@@ -73,11 +73,11 @@ CREATE TABLE habitat
 CREATE TABLE service
 (
 	service_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL UNIQUE,
     description TEXT NOT NULL,
     schedule TIME NULL,
     duration INT NULL,
-    image_id INT NOT NULL,
+    image_id INT NULL,
     FOREIGN KEY (image_id) REFERENCES image(image_id)
 );
 

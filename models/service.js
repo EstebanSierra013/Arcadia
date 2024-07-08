@@ -9,13 +9,14 @@ export class ServiceModel {
   static async create({ input }){
     const { name, description, schedule, duration, image_id } = input;
     try {
-      await dbArcadia.query(
+      const result = await dbArcadia.query(
         'INSERT INTO service ( name, description, schedule, duration, image_id ) VALUES (?, ?, ?, ?, ?);',
-        [name, description, schedule, duration, parseInt(image_id,10)]
+        [name, description, schedule, duration, image_id]
       )
-    } catch (e) {
-      console.log(e)
-      throw new Error('Error creating service')
+      return ({service_id: result.insertId})
+    } catch (err) {     
+      console.log(err)
+      throw err
     }
   }
 

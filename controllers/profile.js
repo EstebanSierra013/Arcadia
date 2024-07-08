@@ -1,6 +1,6 @@
 import { AnimalModel } from "../models/animal.js";
 
-export class AnimalController {
+export class ProfileController {
   static async getAll (req, res){
     const animals = await AnimalModel.getAll();
     res.json(animals);    
@@ -28,6 +28,7 @@ export class AnimalController {
     const input = req.body;
     const { id } = req.params;
     const result = await AnimalModel.delete({ id, input });
+    console.log(result);
     if (result === false) {
       return res.status(404).json({ message: 'Animal not found' });
     }

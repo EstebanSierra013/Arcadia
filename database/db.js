@@ -1,4 +1,5 @@
 import mariadb from "mariadb";
+import { DatabaseException } from "../helpers/customExceptions.js";
 
 class DBServer {
 
@@ -22,23 +23,19 @@ class DBServer {
     try{
       this.connection = await this.db.getConnection();
       this.connection.release();
-    } catch (err) {
-      console.log(err);
+    } catch (err) {      
       this.connection.end();
+      throw new DatabaseException(err.message)
     }
   }
   
   async query(query,param=null) {  
     console.log(query,param)
-    let res = null;  
     try {      
-      res = this.db.execute(query,param);
-      this.connection.release();
+      return await this.db.execute(query,param);
     } catch (err){
-      console.log(err);
-      this.connection.end();
+      throw new DatabaseException(err.sqlMessage, err.code)
     }    
-    return res;
   }
 }
 

@@ -12,7 +12,7 @@ export class AnimalModel {
     try {
       await dbArcadia.query(
         'INSERT INTO animal ( name, species, habitat_id, image_id ) VALUES (?, ?, ?, ?);',
-        [name, species, habitat_id, image_id]
+        [name, species, parseInt(habitat_id,10), parseInt(image_id,10)]
       )
     } catch (e) {
       console.log(e)

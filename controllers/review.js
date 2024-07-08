@@ -1,4 +1,3 @@
-import { validateReview } from "../helpers/schemas.js";
 import { ReviewModel } from "../models/review.js";
 
 export class ReviewController {
@@ -8,7 +7,7 @@ export class ReviewController {
   }
 
   static async create(req, res) {
-    const input = validateReview(req.body);
+    const input = req.body;
     const result = await ReviewModel.create({ input });
     if (result === false) {
       return res.status(404).json({ message: "Review not created" });

@@ -1,3 +1,5 @@
+USE arcadiaDB;
+
 INSERT INTO rol (rol_name) VALUE("Administrateur");
 INSERT INTO rol (rol_name) VALUE("Employé");
 INSERT INTO rol (rol_name) VALUE("Vétérinaire");
@@ -143,3 +145,18 @@ INSERT INTO user (username,password,name,lastname,rol) VALUES (
 1
 );
 
+INSERT INTO user (username,password,name,lastname,rol) VALUES (
+"juansanchez@",
+"",
+"Juan",
+"Sanchez",
+2
+);
+
+INSERT INTO user (username,password,name,lastname,rol) VALUES (
+"andressanchez@",
+"",
+"Andres",
+"Sanchez",
+3
+);

@@ -1,4 +1,3 @@
-import { validateHabitat } from "../helpers/schemas.js";
 import { HabitatModel } from "../models/habitat.js";
 
 export class HabitatController {
@@ -8,7 +7,7 @@ export class HabitatController {
   }
 
   static async create(req, res) {
-    const input = validateHabitat(req.body);
+    const input = req.body;
     const result = await HabitatModel.create({ input });
     if (result === false) {
       return res.status(404).json({ message: "Habitat not created" });
