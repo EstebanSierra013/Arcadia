@@ -1,30 +1,55 @@
+import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
+import { ImageModel } from "../models/image.js";
 import { ServiceModel } from "../models/service.js";
 
 export class ServiceController {
   static async getAll(req, res) {
-    const services = await ServiceModel.getAll();
-    res.json(services);
+    try{
+      const services = await ServiceModel.getAll();
+      console.log(services)
+      if(!services.length) {
+        throw new NotFoundException("Service not found");
+      }
+      res.status(201).json({ services });
+    } catch (err){
+      res.status(404).json({... err})
+    }
   }
 
   static async create(req, res) {
     const input = req.body;
     try{
-      const {result} = await ServiceModel.create({ input });
-      console.log(result)
-      return res.status(201).json({ message: "Service created", service_id});
+      const {service_id} = await ServiceModel.create({ input });
+      res.status(201).json({ message: "Service created, Id: " + service_id});
     }catch(err){
-      return res.status(404).json({... err})
+      res.status(404).json({... err})
+    }    
+  }
+
+  static async update(req, res) {
+    const input = req.body;
+    const { id } = req.params;
+    try{
+      const { affectedRows }  = await ServiceModel.update({ ...input, service_id: id });
+      if (!affectedRows) throw new UpdateFailedException("Service update failed");
+      res.status(201).json({ message: "Service update"});
+    }catch(err){
+      res.status(404).json({... err})
     }    
   }
 
   static async delete(req, res) {
-    const input = req.body;
-    const { id } = req.params;
-    const result = await ServiceModel.delete({ id, input });
-    console.log(result);
-    if (result === false) {
-      return res.status(404).json({ message: "Service not found" });
-    }
-    return res.json({ message: "Service deleted" });
+    const { id } = req.params
+    const { image_id } = req.query;
+    try{
+      const result = await ServiceModel.delete({id});   
+      if (result === false) {
+        throw new NotFoundException("Service not found");
+      }
+      await ImageModel.delete({ id: image_id });
+      res.status(201).json({ message: "Service deleted" });
+    }catch(err){
+      res.status(404).json({... err})
+    }    
   }
 }

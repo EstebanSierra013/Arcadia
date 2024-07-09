@@ -4,61 +4,61 @@ INSERT INTO rol (rol_name) VALUE("Administrateur");
 INSERT INTO rol (rol_name) VALUE("Employé");
 INSERT INTO rol (rol_name) VALUE("Vétérinaire");
 
-INSERT INTO image (image_path) VALUES("\animals\poisson-clown");
-INSERT INTO image (image_path) VALUES("\animals\poisson-ange");
-INSERT INTO image (image_path) VALUES("\animals\tortue");
-INSERT INTO image (image_path) VALUES("\animals\poulpe");
-INSERT INTO image (image_path) VALUES("\animals\etoile-mer");
-INSERT INTO image (image_path) VALUES("\animals\singe-capucin");
-INSERT INTO image (image_path) VALUES("\animals\gorille");
-INSERT INTO image (image_path) VALUES("\animals\chimpanze");
-INSERT INTO image (image_path) VALUES("\animals\orang-outan");
-INSERT INTO image (image_path) VALUES("\animals\lemur-catta");
-INSERT INTO image (image_path) VALUES("\animals\girafe");
-INSERT INTO image (image_path) VALUES("\animals\zebre");
-INSERT INTO image (image_path) VALUES("\animals\elephant");
-INSERT INTO image (image_path) VALUES("\animals\toucan");
-INSERT INTO image (image_path) VALUES("\animals\loriquet");
-INSERT INTO image (image_path) VALUES("\animals\quetzal");
-INSERT INTO image (image_path) VALUES("\animals\colibri");
-INSERT INTO image (image_path) VALUES("\animals\cacatoes");
-INSERT INTO image (image_path) VALUES("\animals\dragon-barbu");
-INSERT INTO image (image_path) VALUES("\animals\serpent");
-INSERT INTO image (image_path) VALUES("\animals\scorpio");
-INSERT INTO image (image_path) VALUES("\animals\gecko");
-INSERT INTO image (image_path) VALUES("\animals\fennec");
-INSERT INTO image (image_path) VALUES("\animals\papillon-monarque");
-INSERT INTO image (image_path) VALUES("\animals\morpho");
-INSERT INTO image (image_path) VALUES("\animals\papillon-verre");
-INSERT INTO image (image_path) VALUES("\animals\papillon-tigre");
-INSERT INTO image (image_path) VALUES("\animals\papillon-hirondelle");
-INSERT INTO image (image_path) VALUES("\animals\crabe");
-INSERT INTO image (image_path) VALUES("\animals\hippocampe");
-INSERT INTO image (image_path) VALUES("\animals\poisson-ange-mangrove");
-INSERT INTO image (image_path) VALUES("\animals\anguille");
-INSERT INTO image (image_path) VALUES("\animals\poisson-archer");
-INSERT INTO image (image_path) VALUES("\animals\panthere");
-INSERT INTO image (image_path) VALUES("\animals\tigre");
-INSERT INTO image (image_path) VALUES("\animals\leopard");
-INSERT INTO image (image_path) VALUES("\animals\lion");
-INSERT INTO image (image_path) VALUES("\animals\jaguar");
-INSERT INTO image (image_path) VALUES("\animals\panda-geant");
-INSERT INTO image (image_path) VALUES("\animals\panda-roux");
+INSERT INTO image (image_path) VALUES("/animals/poisson-clown");
+INSERT INTO image (image_path) VALUES("/animals/poisson-ange");
+INSERT INTO image (image_path) VALUES("/animals/tortue");
+INSERT INTO image (image_path) VALUES("/animals/poulpe");
+INSERT INTO image (image_path) VALUES("/animals/etoile-mer");
+INSERT INTO image (image_path) VALUES("/animals/singe-capucin");
+INSERT INTO image (image_path) VALUES("/animals/gorille");
+INSERT INTO image (image_path) VALUES("/animals/chimpanze");
+INSERT INTO image (image_path) VALUES("/animals/orang-outan");
+INSERT INTO image (image_path) VALUES("/animals/lemur-catta");
+INSERT INTO image (image_path) VALUES("/animals/girafe");
+INSERT INTO image (image_path) VALUES("/animals/zebre");
+INSERT INTO image (image_path) VALUES("/animals/elephant");
+INSERT INTO image (image_path) VALUES("/animals/toucan");
+INSERT INTO image (image_path) VALUES("/animals/loriquet");
+INSERT INTO image (image_path) VALUES("/animals/quetzal");
+INSERT INTO image (image_path) VALUES("/animals/colibri");
+INSERT INTO image (image_path) VALUES("/animals/cacatoes");
+INSERT INTO image (image_path) VALUES("/animals/dragon-barbu");
+INSERT INTO image (image_path) VALUES("/animals/serpent");
+INSERT INTO image (image_path) VALUES("/animals/scorpio");
+INSERT INTO image (image_path) VALUES("/animals/gecko");
+INSERT INTO image (image_path) VALUES("/animals/fennec");
+INSERT INTO image (image_path) VALUES("/animals/papillon-monarque");
+INSERT INTO image (image_path) VALUES("/animals/morpho");
+INSERT INTO image (image_path) VALUES("/animals/papillon-verre");
+INSERT INTO image (image_path) VALUES("/animals/papillon-tigre");
+INSERT INTO image (image_path) VALUES("/animals/papillon-hirondelle");
+INSERT INTO image (image_path) VALUES("/animals/crabe");
+INSERT INTO image (image_path) VALUES("/animals/hippocampe");
+INSERT INTO image (image_path) VALUES("/animals/poisson-ange-mangrove");
+INSERT INTO image (image_path) VALUES("/animals/anguille");
+INSERT INTO image (image_path) VALUES("/animals/poisson-archer");
+INSERT INTO image (image_path) VALUES("/animals/panthere");
+INSERT INTO image (image_path) VALUES("/animals/tigre");
+INSERT INTO image (image_path) VALUES("/animals/leopard");
+INSERT INTO image (image_path) VALUES("/animals/lion");
+INSERT INTO image (image_path) VALUES("/animals/jaguar");
+INSERT INTO image (image_path) VALUES("/animals/panda-geant");
+INSERT INTO image (image_path) VALUES("/animals/panda-roux");
 
-INSERT INTO image (image_path) VALUES ("\habitats\recif-enchante");
-INSERT INTO image (image_path) VALUES ("\habitats\forêt-singes");
-INSERT INTO image (image_path) VALUES ("\habitats\serenite-savane");
-INSERT INTO image (image_path) VALUES ("\habitats\voliere");
-INSERT INTO image (image_path) VALUES ("\habitats\vivarium-soleil-dore");
-INSERT INTO image (image_path) VALUES ("\habitats\jardin-papillons");
-INSERT INTO image (image_path) VALUES ("\habitats\mangrove-mysterieuse");
-INSERT INTO image (image_path) VALUES ("\habitats\enclos-felins");
-INSERT INTO image (image_path) VALUES ("\habitats\foret-bambou");
+INSERT INTO image (image_path) VALUES ("/habitats/recif-enchante");
+INSERT INTO image (image_path) VALUES ("/habitats/forêt-singes");
+INSERT INTO image (image_path) VALUES ("/habitats/serenite-savane");
+INSERT INTO image (image_path) VALUES ("/habitats/voliere");
+INSERT INTO image (image_path) VALUES ("/habitats/vivarium-soleil-dore");
+INSERT INTO image (image_path) VALUES ("/habitats/jardin-papillons");
+INSERT INTO image (image_path) VALUES ("/habitats/mangrove-mysterieuse");
+INSERT INTO image (image_path) VALUES ("/habitats/enclos-felins");
+INSERT INTO image (image_path) VALUES ("/habitats/foret-bambou");
 
-INSERT INTO image (image_path) VALUES ("\services\safari");
-INSERT INTO image (image_path) VALUES ("\services\spectacle-oiseaux");
-INSERT INTO image (image_path) VALUES ("\services\visites-guidees");
-INSERT INTO image (image_path) VALUES ("\services\restaurant"); 
+INSERT INTO image (image_path) VALUES ("/services/safari");
+INSERT INTO image (image_path) VALUES ("/services/spectacle-oiseaux");
+INSERT INTO image (image_path) VALUES ("/services/visites-guidees");
+INSERT INTO image (image_path) VALUES ("/services/restaurant"); 
 
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Poisson-clown","Poissons",1,1);
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Poisson-ange","Poissons",1,2);
@@ -133,8 +133,8 @@ INSERT INTO service (name,description,schedule,image_id,duration) VALUES (
 90);
 
 INSERT INTO service (name,description,image_id) VALUES (
-'Restaurant "Le Repas Sauvage"',
-"Profitez d'une expérience culinaire unique dans notre restaurant à thème “Le Repas Sauvage”. Nous offrons une variété de plats inspirés de la cuisine internationale, utilisant des ingrédients frais et locaux.",
+"Restaurant 'Le Repas Sauvage'",
+"Profitez d'une expérience culinaire unique dans notre restaurant à thème 'Le Repas Sauvage'. Nous offrons une variété de plats inspirés de la cuisine internationale, utilisant des ingrédients frais et locaux.",
 53);
 
 INSERT INTO user (username,password,name,lastname,rol) VALUES (

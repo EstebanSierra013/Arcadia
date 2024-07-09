@@ -1,6 +1,6 @@
 import express, { json} from 'express';
 import 'dotenv/config'
-import multer from 'multer'
+import path from 'node:path'
 
 import { habitatRouter } from './routers/habitats.js';
 import { serviceRouter } from './routers/services.js';
@@ -13,7 +13,7 @@ import { profileRouter } from './routers/profile.js';
 
 
 const app = express();
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(json()); 
 app.use(express.static('public'));

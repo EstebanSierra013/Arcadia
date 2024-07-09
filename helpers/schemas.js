@@ -3,14 +3,10 @@ import z from "zod"
 export const serviceSchema = z.object({
   name: z.string(),
   description: z.string(),
-  schedule: z.string().time(),
-  duration: z.string().duration(),
-  image_id: z.number().positive().nullable(),
-}).partial({
-  schedule: true, 
-  duration: true
+  schedule: z.string().time().nullable(),
+  duration: z.number().nullable(),
+  image_path: z.string().nullable()
 })
-
 
 export const userSchema = z.object({
   username: z.string().email(),
