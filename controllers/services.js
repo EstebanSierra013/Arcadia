@@ -6,7 +6,6 @@ export class ServiceController {
   static async getAll(req, res) {
     try{
       const services = await ServiceModel.getAll();
-      console.log(services)
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
@@ -39,10 +38,10 @@ export class ServiceController {
   }
 
   static async delete(req, res) {
-    const { id } = req.params
-    const { image_id } = req.query;
+    const { ids } = req.params
+    const [service_id, image_id]  = ids.split('_');
     try{
-      const result = await ServiceModel.delete({id});   
+      const result = await ServiceModel.delete({ service_id });   
       if (result === false) {
         throw new NotFoundException("Service not found");
       }

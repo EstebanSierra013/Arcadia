@@ -8,5 +8,5 @@ export const serviceRouter = Router({mergeParams: true});
 
 serviceRouter.get('/',ServiceController.getAll);
 serviceRouter.post('/',validateData(serviceSchema),imageHandle(),ServiceController.create);
-serviceRouter.delete('/:id',imageHandle(),ServiceController.delete);
+serviceRouter.delete('/:ids',ServiceController.delete);
 serviceRouter.post('/:id',validateData(serviceSchema),imageHandle(),ServiceController.update);

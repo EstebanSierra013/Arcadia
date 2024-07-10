@@ -39,11 +39,11 @@ export class ServiceModel {
     }
   }
 
-  static async delete({ id }){
+  static async delete({ service_id }){
     try {
       const { affectedRows } = await dbArcadia.query(
         'DELETE FROM service WHERE service_id = ?;',
-        [id]
+        [service_id]
       )
       return affectedRows != 0 ? true : false ;
     } catch (err) {

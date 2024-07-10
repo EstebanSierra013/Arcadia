@@ -9,4 +9,3 @@ export const profileRouter = Router();
 profileRouter.use('/:role/animals',animalRouter);
 profileRouter.use('/:role/habitats',habitatRouter);
 profileRouter.use('/:role/services',serviceRouter);
-profileRouter.use('/:role',ProfileController);

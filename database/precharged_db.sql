@@ -57,8 +57,8 @@ INSERT INTO image (image_path) VALUES ("/habitats/foret-bambou");
 
 INSERT INTO image (image_path) VALUES ("/services/safari");
 INSERT INTO image (image_path) VALUES ("/services/spectacle-oiseaux");
-INSERT INTO image (image_path) VALUES ("/services/visites-guidees");
 INSERT INTO image (image_path) VALUES ("/services/restaurant"); 
+
 
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Poisson-clown","Poissons",1,1);
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Poisson-ange","Poissons",1,2);
@@ -97,9 +97,7 @@ INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Panthère noire",
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Tigre du Bengale","Félins",8,35);
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Léopard","Félins",8,36);
 INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Lion","Félins",8,37);
-INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Jaguar","Félins",8,38);
-INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Panda géant","Ursidés",9,39);
-INSERT INTO animal (name,species,habitat_id,image_id) VALUES ("Panda roux","Procyonidés",9,40);
+
 
 INSERT INTO habitat (name,description,image_id) VALUES ("Récif Enchanté","Plongez dans le monde magique et coloré des récifs coralliens. Cet aquarium recrée un spectacle vibrant où des poissons aux couleurs éclatantes nagent parmi les coraux et les anémones.",41);
 INSERT INTO habitat (name,description,image_id) VALUES ("Forêt des Singes","Plongez dans un habitat luxuriant et dynamique où les primates jouent et explorent. Écoutez les sons de la jungle et observez ces animaux fascinants interagir.",42);
@@ -109,7 +107,6 @@ INSERT INTO habitat (name,description,image_id) VALUES ("Vivarium du Soleil Dor�
 INSERT INTO habitat (name,description,image_id) VALUES ("Jardin des Papillons","Laissez-vous captiver par la grâce et les couleurs des papillons dans ce jardin enchanteur. Le jardin des papillons est un havre de paix rempli de fleurs et de plantes, où les papillons dansent avec délicatesse.",46);
 INSERT INTO habitat (name,description,image_id) VALUES ("Mangrove Mystérieuse","Explorez le réseau complexe de racines de la mangrove, où la vie marine s'adapte aux eaux saumâtres. Cet aquarium offre un aperçu d'un écosystème unique et crucial pour la biodiversité côtière.",47);
 INSERT INTO habitat (name,description,image_id) VALUES ("Enclos des Grands Félins", "Vivez la majesté et la puissance des grands félins dans cet enclos spécial. Ici, les prédateurs les plus impressionnants du monde rôdent parmi des paysages naturels et une végétation dense.",48);
-INSERT INTO habitat (name,description,image_id) VALUES ("Forêt de Bambou", "Entrez dans le monde paisible et verdoyant de la forêt de bambou, où les pandas géants vivent et se nourrissent. Observez ces créatures adorables dans leur habitat naturel, entourées de bambous verdoyants.",49);
 
 INSERT INTO service (name,description,schedule,image_id,duration) VALUES (
 "Safari en Train Écologique",
@@ -125,17 +122,10 @@ INSERT INTO service (name,description,schedule,image_id,duration) VALUES (
 51,
 30);
 
-INSERT INTO service (name,description,schedule,image_id,duration) VALUES (
-"Visites Guidées Exclusives",
-"Accompagné d'un guide expert, plongez dans les habitats et découvrez les secrets des animaux. Ces visites personnalisées offrent une expérience unique et éducative, parfaite pour toute la famille.",
-"14:00",
-52,
-90);
-
 INSERT INTO service (name,description,image_id) VALUES (
 "Restaurant 'Le Repas Sauvage'",
 "Profitez d'une expérience culinaire unique dans notre restaurant à thème 'Le Repas Sauvage'. Nous offrons une variété de plats inspirés de la cuisine internationale, utilisant des ingrédients frais et locaux.",
-53);
+52);
 
 INSERT INTO user (username,password,name,lastname,rol) VALUES (
 "josesanchez@",

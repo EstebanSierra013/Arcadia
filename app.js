@@ -1,10 +1,8 @@
 import express, { json} from 'express';
 import 'dotenv/config'
-import path from 'node:path'
 
 import { habitatRouter } from './routers/habitats.js';
 import { serviceRouter } from './routers/services.js';
-import { animalRouter } from './routers/animals.js';
 import { contactRouter } from './routers/contact.js';
 import dbArcadia from "./database/db.js";
 import { reportRouter } from './routers/reports.js';
@@ -30,8 +28,3 @@ app.use('/reviews',reviewRouter);
 app.listen(PORT, (req,res) => {
   console.log(`server listening on port http://localhost:${PORT}`)
 })
-
-
-
-//server.listen(0,() => {
-// console.log(server.address().port)})
