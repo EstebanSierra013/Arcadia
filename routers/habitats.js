@@ -2,12 +2,12 @@ import { Router } from "express"
 import { HabitatController } from "../controllers/habitats.js"
 import { validateData } from "../middlewares/validateResult.js";
 import { habitatSchema } from "../helpers/schemas.js";
+import { validateUrl } from "../helpers/validateUrl.js";
+import { imageHandle } from "../middlewares/imageHandle.js";
 
 export const habitatRouter = Router({mergeParams: true});
 
 habitatRouter.get('/',HabitatController.getAll);
-habitatRouter.get('/:id',HabitatController);
-habitatRouter.get('/:name/:id',HabitatController);
-habitatRouter.post('/',validateData(habitatSchema),HabitatController.create);
-habitatRouter.delete('/:id',HabitatController.delete);
-habitatRouter.patch('/:name',HabitatController);
+habitatRouter.post('/',validateUrl('admin'),validateData(habitatSchema),imageHandle(),HabitatController.create);
+habitatRouter.delete('/:ids',validateUrl('admin'),HabitatController.delete);
+habitatRouter.post('/:id',validateUrl('admin'),validateData(habitatSchema),imageHandle(),HabitatController.update);

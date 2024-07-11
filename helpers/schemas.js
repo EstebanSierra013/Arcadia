@@ -20,7 +20,7 @@ export const habitatSchema = z.object({
   name: z.string(),
   description: z.string(),
   habitat_comment: z.string(),
-  image_id: z.number().positive().nullable(),
+  image_path: z.string().nullable()
 }).partial({ habitat_comment: true })
 
 export const reviewSchema = z.object({
@@ -40,6 +40,6 @@ export const animalSchema = z.object({
   name: z.string(),
   species: z.string(),
   habitat_id: z.number().positive().nullable(),
-  image_id: z.number().positive().nullable(),
+  image_path: z.string().nullable(),
   status: z.number().nullish()
 })
