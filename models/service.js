@@ -32,7 +32,6 @@ export class ServiceModel {
         WHERE service_id = ?;`,
         [name, description, schedule, duration, image_id, service_id]
       )
-      console.log(result)
       return result;   
     } catch (err) {     
       throw err

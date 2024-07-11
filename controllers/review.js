@@ -1,28 +1,51 @@
 import { ReviewModel } from "../models/review.js";
+import { NotFoundException } from "../helpers/customExceptions.js";
 
 export class ReviewController {
   static async getAll(req, res) {
-    const reviews = await ReviewModel.getAll();
-    res.json(reviews);
+    try{
+      const reviews = await ReviewModel.getAll();
+      if(!reviews.length) {
+        throw new NotFoundException("Review not found");
+      }
+      res.status(201).json({ reviews });
+    } catch (err){
+      res.status(404).json({... err})
+    }
   }
 
   static async create(req, res) {
     const input = req.body;
-    const result = await ReviewModel.create({ input });
-    if (result === false) {
-      return res.status(404).json({ message: "Review not created" });
-    }
-    return res.status(201).json({ message: "Review created" });
+    try{
+      const {review_id} = await ReviewModel.create({ input });
+      res.status(201).json({ message: "Review created, Id: " + review_id});
+    }catch(err){
+      res.status(404).json({... err})
+    }    
+  }
+
+  static async approveReview(req, res) {
+    const { id } = req.params;
+    try{
+      const { affectedRows }  = await ReviewModel.approveReview({ id });
+      if (!affectedRows) throw new UpdateFailedException("Review approve failed");
+      res.status(201).json({ message: "Review approved"});
+    }catch(err){
+      res.status(404).json({... err})
+    }    
   }
 
   static async delete(req, res) {
-    const input = req.body;
-    const { id } = req.params;
-    const result = await ReviewModel.delete({ id, input });
-    console.log(result);
-    if (result === false) {
-      return res.status(404).json({ message: "Review not found" });
-    }
-    return res.json({ message: "Review deleted" });
+    console.log(req.params)
+    const { id } = req.params
+    try{
+      const result = await ReviewModel.delete({ review_id : id });       
+      if (result === false) {
+        throw new NotFoundException("Review not found");
+      }
+      res.status(201).json({ message: "Review deleted" });
+    }catch(err){
+      res.status(404).json({... err})
+    }    
   }
 }

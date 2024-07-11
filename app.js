@@ -1,13 +1,8 @@
 import express, { json} from 'express';
 import 'dotenv/config'
 
-import { habitatRouter } from './routers/habitats.js';
-import { serviceRouter } from './routers/services.js';
-import { contactRouter } from './routers/contact.js';
 import dbArcadia from "./database/db.js";
-import { reportRouter } from './routers/reports.js';
-import { reviewRouter } from './routers/reviews.js';
-import { profileRouter } from './routers/profile.js';
+import { RouterLoader } from './loaders/router.loader.js';
 
 
 const app = express();
@@ -18,12 +13,8 @@ app.use(express.static('public'));
 
 dbArcadia.connect()
 
-app.use('/habitats',habitatRouter);
-app.use('/services',serviceRouter);
-app.use('/profile',profileRouter);
-app.use('/contact',contactRouter);
-app.use('/reports',reportRouter);
-app.use('/reviews',reviewRouter);
+RouterLoader.init(app)
+
 
 app.listen(PORT, (req,res) => {
   console.log(`server listening on port http://localhost:${PORT}`)
