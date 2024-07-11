@@ -1,11 +1,11 @@
 import dbArcadia from "../database/db.js";
 
 export class ReviewModel {
-  static async getAll(reviews_filter = {}){
+  static async getAll(params = {}){
     try{            
-      const sql_filter = Object.keys(reviews_filter).length ? `WHERE isVisible = ${reviews_filter.isVisible}` :  "";
+      const sql_filter = Object.keys(params).length ? `WHERE isVisible = ${params.isVisible}` :  "";
       const reviews = await dbArcadia.query(
-        `SELECT review_id, pseudo, comment FROM review ${sql_filter} ORDER BY isVisible, review_id DESC;`);
+        `SELECT * FROM review ${sql_filter} ORDER BY isVisible, review_id DESC;`);
       return reviews;
     }catch(err){
       throw err;
@@ -25,11 +25,11 @@ export class ReviewModel {
     }
   }
 
-  static async approveReview( { id } ){
+  static async approveReview( { review_id } ){
     try {
       const result = await dbArcadia.query(
         `UPDATE review SET isVisible = true WHERE review_id = ?;`,
-        [id]
+        [review_id]
       )
       return result;   
     } catch (err) {     

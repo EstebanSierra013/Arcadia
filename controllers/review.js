@@ -1,5 +1,5 @@
 import { ReviewModel } from "../models/review.js";
-import { NotFoundException } from "../helpers/customExceptions.js";
+import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
 
 export class ReviewController {
   static async getAll(req, res) {
@@ -27,7 +27,7 @@ export class ReviewController {
   static async approveReview(req, res) {
     const { id } = req.params;
     try{
-      const { affectedRows }  = await ReviewModel.approveReview({ id });
+      const { affectedRows }  = await ReviewModel.approveReview({ review_id: id });
       if (!affectedRows) throw new UpdateFailedException("Review approve failed");
       res.status(201).json({ message: "Review approved"});
     }catch(err){
