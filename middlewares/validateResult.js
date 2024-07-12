@@ -5,8 +5,8 @@ export function validateData(schema) {
     try {
       schema.parse(req.body);
       next();
-    } catch (error) {
-      const validationError = fromError(error);
+    } catch (err) {
+      const validationError = fromError(err);
       res.status(422).json(validationError.toString());
     }
   };

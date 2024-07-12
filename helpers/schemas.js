@@ -16,6 +16,11 @@ export const userSchema = z.object({
   rol_id: z.number()
 })
 
+export const authSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(process.env.MIN_PASSWORD_LENGTH)
+})
+
 export const habitatSchema = z.object({
   name: z.string(),
   description: z.string(),

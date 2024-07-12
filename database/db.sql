@@ -11,7 +11,7 @@ CREATE TABLE rol
 CREATE TABLE user
 (
 	username VARCHAR(50) NOT NULL PRIMARY KEY UNIQUE,
-    password VARCHAR(25) NOT NULL,
+    password VARCHAR(250) NOT NULL,
     name VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
     rol_id INT NOT NULL,

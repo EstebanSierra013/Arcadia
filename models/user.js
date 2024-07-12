@@ -4,8 +4,21 @@ export class UserModel {
   static async getAll(){
     try{
       const users = await dbArcadia.query(`SELECT 
-        U.*, R.rol  _name FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id;`);
+        U.*, R.rol_name FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id;`);
       return users;
+    }catch(err){
+      throw err;
+    }
+  }
+
+  static async getOne({ username }){
+    try{
+      const user = await dbArcadia.query(`SELECT 
+        U.*, R.rol_name FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id
+        WHERE U.username = ?;`,
+        [username]
+      );
+      return user;
     }catch(err){
       throw err;
     }

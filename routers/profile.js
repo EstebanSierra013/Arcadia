@@ -10,6 +10,7 @@ import { userRouter } from "./users.js";
 
 export const profileRouter = Router();
 
+profileRouter.get('/:role',ProfileController.getProfile)
 profileRouter.use('/:role/services',serviceRouter);
 profileRouter.use('/:role/habitats',habitatRouter);
 profileRouter.use('/:role/reviews',reviewRouter);
