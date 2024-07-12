@@ -127,7 +127,7 @@ INSERT INTO service (name,description,image_id) VALUES (
 "Profitez d'une expérience culinaire unique dans notre restaurant à thème 'Le Repas Sauvage'. Nous offrons une variété de plats inspirés de la cuisine internationale, utilisant des ingrédients frais et locaux.",
 52);
 
-INSERT INTO user (username,password,name,lastname,rol) VALUES (
+INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
 "josesanchez@",
 "",
 "José",
@@ -135,7 +135,7 @@ INSERT INTO user (username,password,name,lastname,rol) VALUES (
 1
 );
 
-INSERT INTO user (username,password,name,lastname,rol) VALUES (
+INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
 "juansanchez@",
 "",
 "Juan",
@@ -143,7 +143,7 @@ INSERT INTO user (username,password,name,lastname,rol) VALUES (
 2
 );
 
-INSERT INTO user (username,password,name,lastname,rol) VALUES (
+INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
 "andressanchez@",
 "",
 "Andres",
