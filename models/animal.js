@@ -2,42 +2,61 @@ import dbArcadia from "../database/db.js";
 
 export class AnimalModel {
   static async getAll(){
-    const animals = await dbArcadia.query('SELECT * FROM animal;');
-    return animals;
+    try{
+      const animals = await dbArcadia.query(`SELECT 
+        A.*, I.image_path FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id;`);
+      return animals;
+    }catch(err){
+      throw err;
+    }
+  }
+
+  static async getAllByHabitat({ habitat_id }){
+    try{
+      const animals = await dbArcadia.query(
+        `SELECT 
+        A.name, A.species, A.status, I.image_path FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id
+        WHERE A.habitat_id = ?;`,
+        [habitat_id]
+      );
+      return animals;
+    }catch(err){
+      throw err;
+    }
   }
 
   static async create({ input }){
     const { name, species, habitat_id, image_id } = input;
-    console.log(typeof(image_id))
     try {
-      await dbArcadia.query(
+      const result = await dbArcadia.query(
         'INSERT INTO animal ( name, species, habitat_id, image_id ) VALUES (?, ?, ?, ?);',
         [name, species, habitat_id, image_id]
       )
-    } catch (e) {
-      console.log(e)
-      throw new Error('Error creating animal')
+      return ({animal_id: result.insertId})
+    } catch (err) {     
+      throw err
     }
   }
 
-  static async update({ id , input}){
-    const { species, habitat_id, image_id } = input;
+  static async update( input ){
+    const { name, species, habitat_id, image_id, animal_id } = input;
     try {
-      await dbArcadia.query(
-        'UPDATE animal SET ? = ? WHERE id = ?;',
-        [species, habitat_id, id]
+      const result = await dbArcadia.query(
+        'UPDATE animal SET name = ?, species = ?, habitat_id = ?, image_id = ? WHERE animal_id = ?;',
+        [name, species, habitat_id, image_id, animal_id]
       )
-    } catch (e) {
-      console.log(e)
-      throw new Error('Error creating animal')
+      return result;   
+    } catch (err) {     
+      console.log(err);
+      throw err;
     }
   }
 
-  static async delete({ id }){
+  static async delete({ animal_id }){
     try {
       const { affectedRows } = await dbArcadia.query(
         'DELETE FROM animal WHERE animal_id = ?;',
-        [id]
+        [animal_id]
       )
       return affectedRows != 0 ? true : false ;
     } catch (e) {

@@ -14,8 +14,8 @@ CREATE TABLE user
     password VARCHAR(25) NOT NULL,
     name VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
-    rol INT NOT NULL,
-    FOREIGN KEY (rol) REFERENCES rol(rol_id)
+    rol_id INT NOT NULL,
+    FOREIGN KEY (rol_id) REFERENCES rol(rol_id)
 );
 
 CREATE TABLE image

@@ -3,9 +3,22 @@ import dbArcadia from "../database/db.js";
 export class HabitatModel {
   static async getAll(){
     try{
-      const services = await dbArcadia.query(`SELECT 
-        H.*, I.image_path FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id;`);
-      return services;
+      const habitat = await dbArcadia.query(
+        `SELECT H.*, I.image_path FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id;`);
+      return habitat;
+    }catch(err){
+      throw err;
+    }
+  }
+
+  static async getOne({ habitat_id }){
+    try{
+      const habitat = await dbArcadia.query(
+        `SELECT H.*, I.image_path FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id
+        WHERE H.habitat_id = ?;`,
+        [habitat_id]
+      );
+      return habitat;
     }catch(err){
       throw err;
     }

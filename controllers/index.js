@@ -28,7 +28,7 @@ export class IndexController {
       res.status(404).json({... err})
     }
   }
-
+  
   static async getHabitats(req, res) {
 
   }

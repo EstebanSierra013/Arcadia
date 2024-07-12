@@ -15,6 +15,20 @@ export class HabitatController {
     }
   }
 
+  static async getOne(req, res) {
+    const { id, animals } = req.params;
+    try{
+      const habitat = await HabitatModel.getOne({habitat_id: id});
+      if(!habitat.length) {
+        throw new NotFoundException("Habitat not found");
+      }
+      res.status(201).json({ habitat, animals });
+    } catch (err){
+      console.log(err)
+      res.status(404).json({... err})
+    }
+  }
+
   static async create(req, res) {
     const input = req.body;
     try{

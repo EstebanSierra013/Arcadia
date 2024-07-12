@@ -1,12 +1,7 @@
 import { Router } from "express"
-import { VeterinaryReportController } from "../controllers/veterinary_report.js";
-import { EmployerReportController } from "../controllers/employer_report.js";
+import { ReportController } from "../controllers/reports.js";
 
-export const reportRouter = Router();
+export const reportRouter = Router({mergeParams: true});
 
-reportRouter.get('/veterinary',VeterinaryReportController.getAll);
-reportRouter.get('/employer',EmployerReportController.getAll);
-reportRouter.post('/veterinary',VeterinaryReportController.create);
-reportRouter.post('/employer',EmployerReportController.create);
-reportRouter.delete('/veterinary/:id',VeterinaryReportController.delete);
-reportRouter.delete('/employer/:id',EmployerReportController.delete);
+reportRouter.post('/',ReportController.create);
+reportRouter.delete('/:id',ReportController.delete);

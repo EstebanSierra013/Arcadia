@@ -13,7 +13,7 @@ export const userSchema = z.object({
   password: z.string().min(process.env.MIN_PASSWORD_LENGTH),
   name: z.string(),
   lastname: z.string(),
-  rol: z.number()
+  rol_id: z.number()
 })
 
 export const habitatSchema = z.object({
