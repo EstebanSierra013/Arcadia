@@ -1,4 +1,5 @@
 import dbArcadia from "../database/db.js";
+import { formatColumnSetSQL } from "../helpers/commonUtils.js";
 
 export class HabitatModel {
   static async getAll(){
@@ -37,17 +38,15 @@ export class HabitatModel {
     }
   }
 
-  static async update( input ){
-    const { name, description, habitat_comment, image_id, habitat_id } = input
+  static async update( { input, habitat_id} ){
+    const { columnsSet, values } = formatColumnSetSQL(input);
     try {
       const result = await dbArcadia.query(
-        `UPDATE habitat SET name = ?, description = ?, habitat_comment = ?, image_id = ? 
-        WHERE habitat_id = ?;`,
-        [name, description, habitat_comment, image_id, habitat_id]
+        `UPDATE habitat SET ${columnsSet} WHERE habitat_id = ?;`,
+        [... values, habitat_id]
       )
       return result;   
     } catch (err) {     
-      console.log(err);
       throw err;
     }
   }
@@ -60,7 +59,6 @@ export class HabitatModel {
       )
       return affectedRows != 0 ? true : false ;
     } catch (e) {
-      console.log(e)
       throw new Error('Error creating habitat')
     }
   }

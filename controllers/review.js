@@ -36,7 +36,6 @@ export class ReviewController {
   }
 
   static async delete(req, res) {
-    console.log(req.params)
     const { id } = req.params
     try{
       const result = await ReviewModel.delete({ review_id : id });       

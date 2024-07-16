@@ -1,21 +1,22 @@
 import { indexRouter } from "../routers/index.js";
 import { profileRouter } from "../routers/profile.js";
-import { serviceRouter } from "../routers/services.js";
-import { contactRouter} from "../routers/contact.js"
-import { habitatRouter } from "../routers/habitats.js";
+import { serviceRouterPublic } from "../routers/services.js";
+import { habitatRouterPublic } from "../routers/habitats.js";
 import { authRouter } from "../routers/auth.js";
-import { enumRols } from "../helpers/enumRols.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { checkRole } from "../middlewares/rolHandle.js";
+import { listRols } from "../helpers/enumRols.js";
+import { contactRouterPublic } from "../routers/contact.js";
+import { reviewRouterPublic } from "../routers/reviews.js";
 
 export class RouterLoader {
-
+  
   static init(app){
+    let regexRoles = listRols.join("|");
     app.use('/',indexRouter);
-    app.use('/profile',authMiddleware(),checkRole(Object.values(enumRols)),profileRouter);
-    app.use('/habitats',habitatRouter)
-    app.use('/services',serviceRouter);
-    app.use('/contact',contactRouter)
+    app.use(`/profile/:type(${regexRoles})`,profileRouter);
+    app.use('/habitats',habitatRouterPublic());
+    app.use('/services',serviceRouterPublic());
+    app.use('/contact',contactRouterPublic());
+    app.use('/reviews',reviewRouterPublic());
     app.use('/auth',authRouter)
   }
 }

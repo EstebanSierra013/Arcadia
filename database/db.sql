@@ -35,9 +35,9 @@ CREATE TABLE animal
     FOREIGN KEY (image_id) REFERENCES image(image_id)
 );
 
-CREATE TABLE employer_report
+CREATE TABLE employee_report
 (
-	employer_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	employee_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     date DATETIME NOT NULL,
     food  VARCHAR(25) NOT NULL,
 	quantity FLOAT NOT NULL,

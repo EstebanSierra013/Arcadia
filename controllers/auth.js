@@ -1,4 +1,4 @@
-import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
+import { NotFoundException} from "../helpers/customExceptions.js";
 import { UserModel } from "../models/user.js";
 import { enumRols } from "../helpers/enumRols.js";
 
@@ -26,7 +26,6 @@ export class AutheticationController {
           expiresIn: "1h"
         })
         
-      console.log('/profile/' + rol)
       res.status(302)
       .cookie("access_token", token, {
         httpOnly: true,
@@ -34,10 +33,9 @@ export class AutheticationController {
         sameSite: "strict",
         maxAge: 1000 * 60 * 60
       })
-      .redirect('/profile/' + user[0].role_name);     
+      .redirect('/profile/' + rol);     
       
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }

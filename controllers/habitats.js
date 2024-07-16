@@ -1,5 +1,5 @@
 import { HabitatModel } from "../models/habitat.js";
-import { NotFoundException } from "../helpers/customExceptions.js";
+import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
 import { ImageModel } from "../models/image.js";
 
 export class HabitatController {
@@ -24,7 +24,6 @@ export class HabitatController {
       }
       res.status(201).json({ habitat, animals });
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }
@@ -43,7 +42,7 @@ export class HabitatController {
     const input = req.body;
     const { id } = req.params;
     try{
-      const { affectedRows }  = await HabitatModel.update({ ...input, habitat_id: id });
+      const { affectedRows }  = await HabitatModel.update({ input, habitat_id: id });
       if (!affectedRows) throw new UpdateFailedException("Habitat update failed");
       res.status(201).json({ message: "Habitat update"});
     }catch(err){
@@ -55,8 +54,7 @@ export class HabitatController {
     const { ids } = req.params
     const [habitat_id, image_id]  = ids.split('_');
     try{
-      const result = await HabitatModel.delete({ habitat_id });   
-      console.log(result)
+      const result = await HabitatModel.delete({ habitat_id }); 
       if (result === false) {
         throw new NotFoundException("Habitat not found");
       }

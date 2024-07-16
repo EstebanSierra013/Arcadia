@@ -30,9 +30,8 @@ export class UserController {
   static async update(req, res) {
     const input = req.body;
     const { id } = req.params;
-    console.log(id)
     try{
-      const { affectedRows }  = await UserModel.update({ ...input, username: id });
+      const { affectedRows }  = await UserModel.update({ input, username: id });
       if (!affectedRows) throw new UpdateFailedException("User update failed");
       res.status(201).json({ message: "User update"});
     }catch(err){

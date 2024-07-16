@@ -25,3 +25,15 @@ export class UpdateFailedException extends DatabaseException{
     super(cause, code)
   }
 }
+
+export class TokenVerificationException extends CustomException{
+  constructor(cause, code){
+    super("Access not authorized",cause, code)
+  }
+}
+
+export class UnauthorizedException extends CustomException{
+  constructor(cause, code){
+    super("Access not authorized",cause, code)
+  }
+}

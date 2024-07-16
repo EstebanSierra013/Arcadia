@@ -128,25 +128,18 @@ INSERT INTO service (name,description,image_id) VALUES (
 52);
 
 INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
-"josesanchez@",
-"",
+"josesanchez@hotmail.com",
+"$2a$10$dxn6SlQlqWzPHvrQpYVLXed2RA3LqLhuiPZV5W1SqpBPETI187uVO",
 "José",
 "Sanchez",
 1
 );
 
-INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
-"juansanchez@",
-"",
-"Juan",
-"Sanchez",
-2
-);
-
-INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
-"andressanchez@",
-"",
-"Andres",
-"Sanchez",
+INSERT INTO veterinary_report (date, status,food, quantity, created_by, animal_id) VALUES (
+"14/05/24",
+5,
+"carne",
+10,
+"josesanchez@hotmail.com",
 3
 );

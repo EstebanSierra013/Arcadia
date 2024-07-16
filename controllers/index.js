@@ -1,10 +1,5 @@
-import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
-import { ImageModel } from "../models/image.js";
+import { NotFoundException } from "../helpers/customExceptions.js";
 import { ServiceModel } from "../models/service.js";
-import { ReviewController } from "./review.js";
-import { animalRouter } from "../routers/animals.js";
-import { habitatRouter } from "../routers/habitats.js";
-import { serviceRouter } from "../routers/services.js"
 import { ReviewModel } from "../models/review.js";
 
 

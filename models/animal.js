@@ -1,4 +1,5 @@
 import dbArcadia from "../database/db.js";
+import { formatColumnSetSQL } from "../helpers/commonUtils.js"
 
 export class AnimalModel {
   static async getAll(){
@@ -38,16 +39,15 @@ export class AnimalModel {
     }
   }
 
-  static async update( input ){
-    const { name, species, habitat_id, image_id, animal_id } = input;
+  static async update( { input, animal_id } ){
+    const { columnsSet, values } = formatColumnSetSQL(input);
     try {
       const result = await dbArcadia.query(
-        'UPDATE animal SET name = ?, species = ?, habitat_id = ?, image_id = ? WHERE animal_id = ?;',
-        [name, species, habitat_id, image_id, animal_id]
+        `UPDATE animal SET ${columnsSet} WHERE animal_id = ?;`,
+        [... values, animal_id]
       )
       return result;   
     } catch (err) {     
-      console.log(err);
       throw err;
     }
   }
@@ -60,7 +60,6 @@ export class AnimalModel {
       )
       return affectedRows != 0 ? true : false ;
     } catch (e) {
-      console.log(e)
       throw new Error('Error creating animal')
     }
   }

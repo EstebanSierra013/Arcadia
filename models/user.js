@@ -1,4 +1,5 @@
 import dbArcadia from "../database/db.js";
+import { formatColumnSetSQL } from "../helpers/commonUtils.js";
 
 export class UserModel {
   static async getAll(){
@@ -37,16 +38,15 @@ export class UserModel {
     }
   }
 
-  static async update( input ){
-    const { name, lastname, rol_id, username } = input;
+  static async update( {input, id} ){
+    const { columnsSet, values } = formatColumnSetSQL(input);
     try {
       const result = await dbArcadia.query(
-        'UPDATE user SET name = ?, lastname = ? WHERE username = ?;',
-        [name, lastname, rol_id, username]
+        `UPDATE user SET ${columnsSet} WHERE username = ?;`,
+        [...values, id]
       )
       return result;   
     } catch (err) {     
-      console.log(err);
       throw err;
     }
   }
@@ -59,7 +59,6 @@ export class UserModel {
       )
       return affectedRows != 0 ? true : false ;
     } catch (e) {
-      console.log(e)
       throw new Error('Error creating user')
     }
   }
