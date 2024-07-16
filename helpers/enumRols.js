@@ -3,3 +3,5 @@ export const enumRols =  {
   Employé: "employee",
   Vétérinaire: "veterinary"
 }
+
+export const [... listRols] = Object.values(enumRols);

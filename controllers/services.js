@@ -29,7 +29,7 @@ export class ServiceController {
     const input = req.body;
     const { id } = req.params;
     try{
-      const { affectedRows }  = await ServiceModel.update({ ...input, service_id: id });
+      const { affectedRows }  = await ServiceModel.update({ input, service_id: id });
       if (!affectedRows) throw new UpdateFailedException("Service update failed");
       res.status(201).json({ message: "Service update"});
     }catch(err){

@@ -1,20 +1,15 @@
-import express, { json} from 'express';
 import 'dotenv/config'
-
-import dbArcadia from "./database/db.js";
+import { ExpressLoader } from './loaders/express.loader.js';
+import { DatabaseLouder } from './loaders/database.loader.js';
 import { RouterLoader } from './loaders/router.loader.js';
-import cookieParser from 'cookie-parser';
 
-const app = express();
+
+
 const PORT = process.env.PORT || 3000;
 
-app.use(json()); 
-app.use(express.static('public'));
-app.use(cookieParser());
-
-dbArcadia.connect()
-
-RouterLoader.init(app)
+const app = ExpressLoader.init();
+DatabaseLouder.init();
+RouterLoader.init(app);
 
 
 app.listen(PORT, (req,res) => {

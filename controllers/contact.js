@@ -32,13 +32,11 @@ export class ContactController {
       if (!affectedRows) throw new UpdateFailedException("Contact replied failed");
       res.status(201).json({ message: "Contact replied "});
     }catch(err){
-      console.log(err)
       res.status(404).json({... err})
     }    
   }
 
   static async delete(req, res) {
-    console.log(req.params)
     const { id } = req.params
     try{
       const result = await ContactModel.delete({ contact_id : id });       

@@ -11,6 +11,7 @@ export function imageHandle(){
       }else{        
         req.body.image_id = result.image_id;
       }
+      delete req.body.image_path;
       next();
     }catch(err){
       res.status(404).json({... err})

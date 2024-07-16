@@ -1,9 +1,18 @@
 import { Router } from "express";
 import { ReviewController } from "../controllers/review.js";
+import { reviewSchema } from "../helpers/schemas.js";
+import { validateData } from "../middlewares/validateResult.js";
 
-export const reviewRouter = Router({ mergeParams: true });
+export function reviewRouterPrivated(){
+  const reviewRouter = Router();
+  reviewRouter.get("/", ReviewController.getAll);
+  reviewRouter.get("/:id", ReviewController.approveReview);
+  reviewRouter.delete('/:id',ReviewController.delete);
+  return reviewRouter;
+}
 
-reviewRouter.get("/", ReviewController.getAll);
-reviewRouter.post("/", ReviewController.create);
-reviewRouter.get("/:id", ReviewController.approveReview);
-reviewRouter.delete('/:id',ReviewController.delete);
+export function reviewRouterPublic(){  
+  const reviewRouter = Router();
+  reviewRouter.post("/", validateData(reviewSchema),ReviewController.create);
+  return reviewRouter;
+}

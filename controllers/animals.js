@@ -25,7 +25,6 @@ export class AnimalController {
       req.params.animals = animals;
       next()
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }
@@ -43,9 +42,8 @@ export class AnimalController {
   static async update(req, res) {
     const input = req.body;
     const { id } = req.params;
-    console.log(id)
     try{
-      const { affectedRows }  = await AnimalModel.update({ ...input, animal_id: id });
+      const { affectedRows }  = await AnimalModel.update({ input, animal_id: id });
       if (!affectedRows) throw new UpdateFailedException("Animal update failed");
       res.status(201).json({ message: "Animal update"});
     }catch(err){

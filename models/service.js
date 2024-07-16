@@ -1,4 +1,5 @@
 import dbArcadia from "../database/db.js";
+import { formatColumnSetSQL } from "../helpers/commonUtils.js";
 
 export class ServiceModel {
   static async getAll(){
@@ -24,17 +25,16 @@ export class ServiceModel {
     }
   }
 
-  static async update( input ){
-    const { name, description, schedule, duration, image_id, service_id} = input
+  static async update( { input, service_id } ){
+    const { columnsSet, values } = formatColumnSetSQL(input);
     try {
       const result = await dbArcadia.query(
-        `UPDATE service SET name = ?, description = ?, schedule = ?, duration = ?, image_id = ? 
-        WHERE service_id = ?;`,
-        [name, description, schedule, duration, image_id, service_id]
+        `UPDATE service SET ${columnsSet} WHERE service_id = ?;`,
+        [... values, service_id]
       )
       return result;   
     } catch (err) {     
-      throw err
+      throw err;
     }
   }
 
