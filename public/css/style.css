@@ -1,0 +1,125 @@
+
+/* GENERAL */
+
+:root {
+  --green-color: #20554C;
+  --dark-blue-color: #0D2C3B;
+  --light-blue-color: #3391BE;
+  --dark-yellow-color: #FFB400;
+  --light-yellow-color: #FAF5E9;
+}
+
+p{
+  margin: 0;
+  font-size: .75rem;
+}
+
+h1,h2,h3{
+  font-weight: bold;
+}
+
+a{
+  list-style: none;
+  color: inherit;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+  display: block;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+.flux{
+  padding: 0 3rem 0;;
+}
+
+
+/* NAV */
+.navbar-principal{
+  background-color: var(--dark-blue-color);
+  color: white;
+}
+
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.logo{
+  max-width: 90px;
+}
+
+#offcanvas{
+  width: 100%;
+  background-color: var(--dark-blue-color) ;
+}
+
+#offcanvas .btn-close{
+  right: 1rem;
+}
+
+#offcanvas ul li{
+  margin: 1rem;
+  text-align: center;
+}
+
+
+/* MAIN */
+main{ 
+  background-color: var(--green-color);
+}
+
+.banner{
+  color:white;
+  background-image: url("/assets/img/banner_index.jpg");
+  background-size: auto 100% ;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 60vh;
+}
+
+/* MAIN HABITATS*/
+
+.habitats-container{
+  color: white;
+}
+
+.banner-habitats-container{
+  background-image: url("/assets/img/banner_habitats.jpg");
+  background-size: 150% auto;
+  background-repeat: no-repeat;
+  background-position: bottom -9rem right -10rem;
+  height: 30vh;
+}
+
+
+/* MAIN SERVICES*/
+
+.services-container{
+  background-color: white;
+  color: var(--green-color);
+}
+/* MAIN REVIEWS*/
+
+.reviews-container{
+  background-color: var(--light-yellow-color);
+  color: var(--green-color);
+}
+
+.form_review_container{
+  background-color: var(--dark-yellow-color);
+}
+
+footer{
+  color: white;
+  background-color: var(--dark-blue-color);
+}
+
+.bi{
+  width: 1.5rem;
+  height: 1.5rem;
+}
