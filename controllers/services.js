@@ -9,7 +9,8 @@ export class ServiceController {
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
-      res.status(201).json({ services });
+      res.render("pages/services", { services })
+      //res.status(201).json({ services });
     } catch (err){
       res.status(404).json({... err})
     }

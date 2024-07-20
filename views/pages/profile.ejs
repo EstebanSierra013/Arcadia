@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <header>
+      <%- include('../partials/header'); %>
+    </header>
+    <main>
+      <div class="d-flex flex-column justify-content-center banner-secondary">
+        <div class="banner-overlay"></div>
+        <div class="text-center banner-title">
+          <h1 id="name_page">Bienvenue, <%= user.name + ' ' +user.lastname%></h1>
+        </div>
+      </div>
+      <div class="d-flex justify-content-evenly profil-container p-4">
+        <div class="d-inline">
+          <img src= "/assets/img/user_icon.svg" alt="Image user">
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+          <h2><%= user.name + ', ' +user.lastname%></h2>
+          <h4><%= user.rol_name %></h4>
+          <p><%= user.username %></p>
+        </div>
+      </div>
+      </div>
+      </div>
+    </main>      
+    <footer>
+      <%- include('../partials/footer'); %>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/js/script.js" crossorigin="anonymous"> </script>
+  </body>
+</html>

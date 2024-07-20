@@ -5,5 +5,6 @@ import { AutheticationController } from "../controllers/auth.js";
 
 export const authRouter = Router();
 
+authRouter.get('/login',AutheticationController.renderLogin);
 authRouter.post('/login',validateData(authSchema),AutheticationController.login);
 authRouter.post('/logout',AutheticationController.logout);

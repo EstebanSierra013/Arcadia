@@ -13,6 +13,7 @@ export function contactRouterPrivated(){
 
 export function contactRouterPublic(){  
   const contactRouter = Router();
+  contactRouter.get('/',ContactController.renderContact);
   contactRouter.post('/',validateData(contactSchema),ContactController.create);
   return contactRouter;
 }

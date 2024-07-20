@@ -6,7 +6,16 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export class AutheticationController {
-  static async login(req, res) {
+
+  static async renderLogin(req, res) {
+    try{
+      res.render("pages/login");
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
+  static async  login(req, res) {
     const {username, password} = req.body;
     try{
       const user  = await UserModel.getOne({ username });
@@ -25,8 +34,7 @@ export class AutheticationController {
         {
           expiresIn: "1h"
         })
-        
-      res.status(302)
+      res.status(301)
       .cookie("access_token", token, {
         httpOnly: true,
         secure: true,

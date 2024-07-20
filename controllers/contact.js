@@ -3,6 +3,14 @@ import { UpdateFailedException, NotFoundException } from "../helpers/customExcep
 
 export class ContactController {
 
+  static async renderContact(req, res) {
+    try{
+      res.render("pages/contact");
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
   static async getAll(req, res) {
     try{
       const contacts = await ContactModel.getAll();

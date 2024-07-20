@@ -2,7 +2,7 @@ import { fromError } from 'zod-validation-error';
 
 export function validateData(schema) {
   return (req,res,next) => {
-    try {
+    try {      
       schema.parse(req.body);
       next();
     } catch (err) {

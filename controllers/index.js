@@ -17,17 +17,7 @@ export class IndexController {
       res.render('pages/index', { services, habitats, animals, reviews });
       //res.status(201).json({ services, reviews });
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }
-  
-  static async getHabitats(req, res) {
-
-  }
-
-  static async createContact(req, res) {
-    
-  }
-
 }

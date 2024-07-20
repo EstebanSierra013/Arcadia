@@ -52,7 +52,6 @@ export class ReportModel {
   }
   
   static async delete( input ){
-    console.log(input)
     try {
       const { affectedRows } = await dbArcadia.query(
         `DELETE FROM ${input.rol}_report WHERE ${input.rol}_report_id = ?;`,
@@ -60,7 +59,6 @@ export class ReportModel {
       )
       return affectedRows != 0 ? true : false ;
     } catch (e) {
-      console.log(e)
       throw new Error('Error deleting report')
     }
   }

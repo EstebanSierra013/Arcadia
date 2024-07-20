@@ -1,0 +1,23 @@
+<div class="modal fade" tabindex="-1" aria-labelledby="formReview" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nouveau opinion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/reviews" onsubmit="handleFormSubmit(event, this)">
+          <div class="mb-3">
+            <label for="Pseudo" class="form-label">Pseudo</label>
+            <input type="text" name="pseudo" class="form-control" placeholder="Pseudo">
+          </div>
+          <div class="mb-3">
+            <label for="Comment" class="form-label">Comment</label>
+            <input type="text" name="comment" class="form-control" placeholder="Comment">
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

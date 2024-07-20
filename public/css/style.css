@@ -2,11 +2,17 @@
 /* GENERAL */
 
 :root {
-  --green-color: #20554C;
+  --green-color: #20554c;
   --dark-blue-color: #0D2C3B;
   --light-blue-color: #3391BE;
   --dark-yellow-color: #FFB400;
   --light-yellow-color: #FAF5E9;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 p{
@@ -14,8 +20,9 @@ p{
   font-size: .75rem;
 }
 
-h1,h2,h3{
+h1,h2,h3,h4{
   font-weight: bold;
+  margin: 0;
 }
 
 a{
@@ -33,7 +40,9 @@ ul{
 }
 
 .flux{
-  padding: 0 3rem 0;;
+  color: white;
+  padding: 3rem; 
+  background-color:rgba(32, 85, 76, 0.9);
 }
 
 
@@ -50,7 +59,7 @@ ul{
 }
 
 .logo{
-  max-width: 90px;
+  max-height: 40px;
 }
 
 #offcanvas{
@@ -71,12 +80,14 @@ ul{
 /* MAIN */
 main{ 
   background-color: var(--green-color);
+  background-image: url("/assets/img/textura.jpg");
+  background-size: 100% auto;
 }
 
 .banner{
   color:white;
   background-image: url("/assets/img/banner_index.jpg");
-  background-size: auto 100% ;
+  background-size: cover ;
   background-repeat: no-repeat;
   background-position: center center;
   height: 60vh;
@@ -84,35 +95,147 @@ main{
 
 /* MAIN HABITATS*/
 
-.habitats-container{
+.introduction-container{
   color: white;
 }
 
-.banner-habitats-container{
-  background-image: url("/assets/img/banner_habitats.jpg");
-  background-size: 150% auto;
-  background-repeat: no-repeat;
-  background-position: bottom -9rem right -10rem;
-  height: 30vh;
+
+/* MAIN HABITATS*/
+
+.habitats-container-index{
+  color: white;
 }
 
+.banner-habitats-container-index{
+  background-image: url("/assets/img/banner_habitats.jpg");
+  background-size: cover;
+  height: 50vh;
+}
+
+.list-habitats-container-index{
+  color: var(--green-color);
+}
+
+.card-list{
+  border-color: var(--green-color);
+  border-width: .1rem;
+  box-shadow: 0 .5rem .5rem rgba(0,0,0,0.25);
+  height: auto;
+  width: 100%;
+}
+
+.card-list:hover{
+  transform: scale(1.1);  
+}
 
 /* MAIN SERVICES*/
 
-.services-container{
+.services-container-index{
   background-color: white;
   color: var(--green-color);
 }
+
 /* MAIN REVIEWS*/
 
-.reviews-container{
+.reviews-container-index{
   background-color: var(--light-yellow-color);
   color: var(--green-color);
 }
 
-.form_review_container{
+.form_review_container-index{
   background-color: var(--dark-yellow-color);
 }
+
+
+/* PAGE HABITATS */
+
+.banner-secondary{
+  color:white;
+  position: relative;
+  background-image: url("/assets/img/banner_landscape.jpg");
+  background-size: cover ;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 60vh;
+  isolation: isolate;
+}
+
+.banner-overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--dark-blue-color);
+  opacity: .7;
+}
+
+.banner-title{
+  z-index: 1;
+}
+
+.list-habitats-container{
+  background-color: white;
+}
+
+/* PAGE SERVICES */
+
+.list-services-container{
+  background-color: white;
+  color: var(--green-color);
+}
+
+
+/* FORMS */
+
+
+.form-container{
+  background-color: white;  
+  border-radius: 1rem;
+  color: var(--dark-blue-color);
+}
+
+.form-container textarea{
+  
+  border-radius: .75rem;
+}
+
+.form-control{
+  color: var(--dark-blue-color);
+  background-color: var(--light-yellow-color);
+  border-bottom-color: rgba(0,0,0,.42);
+  box-shadow: none;
+  border: none;
+  border-radius: .2rem .2rem 0 0;
+}
+
+.btn-arcadia-p{
+  width: 100%;
+  background-color: var(--dark-yellow-color);
+  border-radius: 1rem;
+}
+
+
+
+
+/* AUTH */
+
+.login-container{
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+
+/* PROFIL */
+
+.profil-container{
+  color: var(--green-color);
+  background-color: white;
+}
+
+.profil-container img{
+  width: 8rem;
+  height: auto;
+}
+/* FOOTER */
 
 footer{
   color: white;

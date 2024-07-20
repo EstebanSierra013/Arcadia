@@ -2,6 +2,15 @@ import { ReviewModel } from "../models/review.js";
 import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
 
 export class ReviewController {
+
+  static async renderNew(req, res) {
+    try{
+      res.render("/pages/");
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
   static async getAll(req, res) {
     try{
       const reviews = await ReviewModel.getAll();
@@ -15,7 +24,7 @@ export class ReviewController {
   }
 
   static async create(req, res) {
-    const input = req.body;
+    const input = req.body;    
     try{
       const {review_id} = await ReviewModel.create({ input });
       res.status(201).json({ message: "Review created, Id: " + review_id});

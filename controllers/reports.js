@@ -10,8 +10,7 @@ export class ReportController {
       const reports = (rol == enumRols.Administrateur) ? await ReportModel.getAll() :await ReportModel.getAll() ;
       
       res.status(201).json({ ... reports });
-    } catch (err){      
-      console.log(err)
+    } catch (err){   
       res.status(404).json({err})
     }
   }
@@ -19,7 +18,6 @@ export class ReportController {
   static async create(req, res) {    
     const input = req.body;
     const { rol } = req.session.user;
-    console.log({ ...input, rol })
     try {
       const { report_id } = await ReportModel.create({ ...input, rol });
       res.status(201).json({ message: "Report created, Id: " + report_id });

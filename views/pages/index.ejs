@@ -8,57 +8,48 @@
       <%- include('../partials/header'); %>
     </header>
     <main>
-      <div class="banner">
-        <div class="d-flex flex-column justify-content-center text-center banner">
-          <h1>Arcadia</h1>
-          <h2>Découvrez la magie de la vie sauvage</h2>
-        </div>
+      <div class="d-flex flex-column justify-content-center text-center banner">
+        <h1 id="name_page">Arcadia</h1>
+        <h2>Découvrez la magie de la vie sauvage</h2>
       </div>
-      <div class="introduction-container p-5">
+      <div class="introduction-container flux">
         <p>Plongez dans un monde merveilleux où la nature prend vie. Au Zoo d'Arcadia, nous avons recréé des habitats naturels fascinants pour abriter une incroyable diversité d'animaux. Explorez, apprenez et émerveillez-vous devant la beauté de la faune mondiale.</p>
       </div>
-      <div class="habitats-container">        
-        <div class="banner-habitats-container pt-5">
-          <div class="flux">
-            <h2>Découvrez Nos Habitats</h2>
-            <p>Nos habitats soigneusement conçus vous permettent d'explorer les écosystèmes les plus emblématiques du monde. Chaque habitat offre une expérience immersive unique, vous rapprochant des animaux et de leur environnement naturel.</p>
+      <div class="d-inline-flex flex-column habitats-container-index">        
+        <div class="d-flex flex-column text-center banner-habitats-container-index pt-5">
+          <h2>Découvrez Nos Habitats</h2>      
+        </div>
+        <div class="d-flex gap-4 flex-column py-5 flux">
+          <p>Nos habitats soigneusement conçus vous permettent d'explorer les écosystèmes les plus emblématiques du monde. Chaque habitat offre une expérience immersive unique, vous rapprochant des animaux et de leur environnement naturel.</p>        
+          <div class="d-flex flex-column gap-4 list-habitats-container-index">
+            <% var i = 1; habitats.slice(0,3).forEach(function(habitat){ %>
+              <%- include('../partials/card-list', { objet: habitat, i }); %>
+            <% i++; }); %>  
           </div>
         </div>
-        <div class="list-habitats-container">
-          <ul>
-            <% habitats.forEach(function(habitat){ %>
-              <li><%= habitat.name%></li>
-              <!-- <img src=<%= habitat.image_path%> alt="Habitat <%= habitat.name%>">>-->
-              <% }); %>
-          </ul>
-        </div>
       </div>
-      <div class="services-container d-flex flex-column p-5 gap-5 flux">  
+      <div class="-flex flex-column p-5 gap-4 flux services-container-index ">  
         <h2>Profitez de Nos Services</h2>
         <p>Nous proposons une gamme de services et d'expériences pour enrichir votre visite. Découvrez tout ce que le Zoo d'Arcadia a à offrir pour rendre votre journée inoubliable.</p>
-        <div class="list-services-container">
-          <ul>
-            <% services.forEach(function(service){ %>
-              <li><%= service.name%></li>          
-              <% }); %>
-          </ul>
+        <div class="d-flex flex-column gap-4">
+            <% var i = 1; services.slice(0,3).forEach(function(service){ %>
+              <%- include('../partials/card-list', { objet: service, i }); %>
+            <% i++; }); %>
         </div>
       </div>
-      <div class="reviews-container d-flex flex-column pt-5 text-center">  
+      <div class="d-flex flex-column pt-5 text-center reviews-container-index">  
         <h2>Opinions de Nos Visiteurs</h2>
-        <div class="list-reviews-container p-5 flux">
-          <ul>
-            <% if (reviews.length){%>
-              <% reviews.forEach(function(review){ %>
-                <li><%= review.pseudo%></li>          
-              <% }); %>
-            <% }else{%>
-              <p> NO HAY REVIEWS </p>
-            <% } %>
-          </ul>
+        <div class="list-reviews-container-index p-5 flux">
+          <div class="d-flex flex-column gap-4">
+            <% var i = 1; reviews.forEach(function(review){ %>
+              <%- include('../partials/card-reviews', { review , i }); %>
+            <% i++; }); %>
+          </div>
         </div>
-        <div class="form_review_container p-5 flux">
+        <div class="d-flex flex-column gap-3 form_review_container-index p-5 flux">
           <p>Votre expérience au Zoo d'Arcadia est précieuse pour nous. Nous vous invitons à partager vos impressions et vos suggestions pour nous aider à continuer à améliorer nos services et nos installations.</p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formReview">Commenter</button>
+          <%- include('../partials/forms/form-reviews'); %>
         </div>
       </div>
       
@@ -69,5 +60,6 @@
       <%- include('../partials/footer'); %>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/js/script.js" crossorigin="anonymous"> </script>
   </body>
 </html>

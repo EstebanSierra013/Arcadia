@@ -9,7 +9,8 @@ export class HabitatController {
       if(!habitats.length) {
         throw new NotFoundException("Habitat not found");
       }
-      res.status(201).json({ habitats });
+      res.render("pages/habitats", { habitats })
+      //res.status(201).json({ habitats });
     } catch (err){
       res.status(404).json({... err})
     }

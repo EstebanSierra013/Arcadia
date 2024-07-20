@@ -30,7 +30,6 @@ class DBServer {
   }
   
   async query(query,param=null) {  
-    console.log(query,param)
     try {      
       return await this.db.execute(query,param);
     } catch (err){
