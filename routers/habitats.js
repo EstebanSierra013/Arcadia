@@ -18,7 +18,7 @@ export function habitatRouterPrivated(){
 
 export function habitatRouterPublic(){  
   const habitatRouter = Router();
-  habitatRouter.get('/',HabitatController.getAll);
+  habitatRouter.get('/',HabitatController.renderHabitat);
   habitatRouter.get('/:id',AnimalController.getAllByHabitat, HabitatController.getOne);
   return habitatRouter;
 }

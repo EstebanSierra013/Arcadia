@@ -6,7 +6,10 @@ export function authMiddleware(roles = []){
     const token = req.cookies.access_token;
     req.session = { user: null }    
     try {
-      if (!token) throw new TokenVerificationException("User not logged in");
+      if (!token) {
+        return res.status(302).redirect("/auth/login")
+        throw new TokenVerificationException("User not logged in");
+      }
       const data = jwt.verify(token, process.env.SECRET_JWT_KEY);
       req.session.user = data;
       const { rol } = req.session.user;

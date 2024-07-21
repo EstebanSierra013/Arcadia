@@ -1,9 +1,12 @@
 import { ImageModel } from '../models/image.js';
+import multer  from "multer";
+
 
 export function imageHandle(){
   return async (req,res,next) => {
     const { image_path } = req.body;
     try{
+      const upload = multer({ dest: `../public${image_path}` })
       const result = await ImageModel.findOne( { image_path });
       if(!result.isFound){
         const { image_id } = await ImageModel.create({input: req.body});

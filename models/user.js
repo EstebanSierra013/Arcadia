@@ -5,7 +5,8 @@ export class UserModel {
   static async getAll(){
     try{
       const users = await dbArcadia.query(`SELECT 
-        U.*, R.rol_name FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id;`);
+        U.username as Username, U.name as Prenom, U.lastname as Nom, R.rol_name as Role FROM user U 
+        LEFT JOIN rol R ON U.rol_id = R.rol_id;`);
       return users;
     }catch(err){
       throw err;
@@ -15,7 +16,8 @@ export class UserModel {
   static async getOne({ username }){
     try{
       const user = await dbArcadia.query(`SELECT 
-        U.*, R.rol_name FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id
+        U.username as Username, U.name as Prenom, U.lastname as Nom, U.password,  R.rol_name as Role
+        FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id
         WHERE U.username = ?;`,
         [username]
       );

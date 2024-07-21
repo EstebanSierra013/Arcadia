@@ -1,5 +1,5 @@
 import { ReportModel } from "../models/reports.js";
-import { enumRols } from "../helpers/enumRols.js"
+import { enumRols, enumFunctionbyRol } from "../helpers/enumRols.js"
 import { NotFoundException } from "../helpers/customExceptions.js";
 
 export class ReportController {
@@ -7,10 +7,17 @@ export class ReportController {
   static async getAll(req, res) {
     const { rol } = req.session.user;
     try{      
-      const reports = (rol == enumRols.Administrateur) ? await ReportModel.getAll() :await ReportModel.getAll() ;
-      
-      res.status(201).json({ ... reports });
+      const reports = (rol == enumRols.Vétérinaire) ? await ReportModel.getAll() : (rol == enumRols.Administrateur) ? await ReportModel.getAllByRol( { rol: "veterinary"} ) : await ReportModel.getAll( rol ) ;     
+      const details= {
+        name: "Reports",
+        en_name: "reports",
+        url: req.originalUrl,
+        rol: req.session.user.rol
+      }
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      res.status(201).render("pages/gestion", { objets: reports, details, functions})
     } catch (err){   
+      console.log(err)
       res.status(404).json({err})
     }
   }

@@ -5,7 +5,7 @@ export class ReviewModel {
     try{            
       const sql_filter = Object.keys(params).length ? `WHERE isVisible = ${params.isVisible}` :  "";
       const reviews = await dbArcadia.query(
-        `SELECT * FROM review ${sql_filter} ORDER BY isVisible, review_id DESC;`);
+        `SELECT R.review_id as id, R.pseudo as Pseudo, R.comment as Commentaire, R.isVisible FROM review R ${sql_filter} ORDER BY isVisible, review_id DESC;`);
       return reviews;
     }catch(err){
       throw err;

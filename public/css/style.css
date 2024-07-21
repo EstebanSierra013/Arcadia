@@ -31,7 +31,6 @@ a{
   text-decoration: none;
   font-size: 1rem;
   white-space: nowrap;
-  display: block;
 }
 
 ul{
@@ -207,12 +206,20 @@ main{
   border-radius: .2rem .2rem 0 0;
 }
 
+/* BUTTONS */
+
 .btn-arcadia-p{
   width: 100%;
   background-color: var(--dark-yellow-color);
   border-radius: 1rem;
 }
 
+.btn-arcadia-s{
+  width: 100%;
+  background-color: var(--dark-blue-color);
+  border-radius: 1rem;
+  color: white;
+}
 
 
 
@@ -235,6 +242,17 @@ main{
   width: 8rem;
   height: auto;
 }
+
+/* GESTION - TABLE */
+
+.gestion-container{
+  background-color: white;
+}
+
+.table td{
+  min-width: 15rem;
+}
+
 /* FOOTER */
 
 footer{
@@ -245,4 +263,8 @@ footer{
 .bi{
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.list-gestion{
+  color: var(--dark-blue-color);
 }

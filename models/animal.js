@@ -5,7 +5,10 @@ export class AnimalModel {
   static async getAll(){
     try{
       const animals = await dbArcadia.query(`SELECT 
-        A.*, I.image_path FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id;`);
+        A.animal_id as Id, A.name as Nom, A.species as Race, A.status as Status, 
+        I.image_path as Image, H.habitat_id as Habitat
+        FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id 
+        LEFT JOIN habitat H ON A.habitat_id = H.habitat_id;`);
       return animals;
     }catch(err){
       throw err;
@@ -16,7 +19,7 @@ export class AnimalModel {
     try{
       const animals = await dbArcadia.query(
         `SELECT 
-        A.name, A.species, A.status, I.image_path FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id
+        A.name as Nom, A.species as Race, A.status as Status, I.image_path as Image FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id
         WHERE A.habitat_id = ?;`,
         [habitat_id]
       );

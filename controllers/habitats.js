@@ -1,9 +1,29 @@
 import { HabitatModel } from "../models/habitat.js";
 import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
 import { ImageModel } from "../models/image.js";
+import { enumFunctionbyRol } from "../helpers/enumRols.js";
 
 export class HabitatController {
   static async getAll(req, res) {
+    try{
+      const habitats = await HabitatModel.getAll();
+      if(!habitats.length) {
+        throw new NotFoundException("Habitat not found");
+      }
+      const details= {
+        name: "Habitats",
+        en_name: "habitats",
+        url: req.originalUrl,
+        rol: req.session.user.rol
+      }
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      res.status(201).render("pages/gestion", { objets: habitats, details, functions})
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
+  static async renderHabitat(req, res) {
     try{
       const habitats = await HabitatModel.getAll();
       if(!habitats.length) {

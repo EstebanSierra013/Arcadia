@@ -10,4 +10,3 @@ export function formatColumnSetSQL (object)  {
       values
   };
 };
-

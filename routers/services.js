@@ -16,6 +16,6 @@ export function serviceRouterPrivated(){
 
 export function serviceRouterPublic(){  
   const serviceRouter = Router();
-  serviceRouter.get('/',ServiceController.getAll);
+  serviceRouter.get('/',ServiceController.renderService);
   return serviceRouter;
 }

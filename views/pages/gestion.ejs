@@ -11,13 +11,23 @@
       <div class="d-flex flex-column justify-content-center banner-secondary">
         <div class="banner-overlay"></div>
         <div class="text-center banner-title">
-          <h1 id="name_page">Contact</h1>
+          <h1 id="name_page">Gestion <%= details.name %></h1>
         </div>
-      </div>
+      </div>  
       <div class="flux">
-        <%- include('../partials/forms/form-contact'); %>
-      </div>      
-    </main>
+        <div class="d-flex flex-column p-5 gap-4 gestion-container">
+          <div>           
+            <% if(functions[details.en_name] == "all") {%>   
+              <div class="text-center">
+                <button type="button" class="btn btn-arcadia-s" data-bs-toggle="modal" data-bs-target="<%= details.en_name %>-b">Ajouter</button>
+              </div>           
+            <% }; %> 
+            <%- include('modal-create', { details, functions }); %> 
+          </div>
+          <%- include('../partials/card-list-gestion', { objets, details }); %>
+        </div>        
+      </div>
+    </main>      
     <footer>
       <%- include('../partials/footer'); %>
     </footer>

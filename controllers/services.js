@@ -1,6 +1,7 @@
 import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
 import { ImageModel } from "../models/image.js";
 import { ServiceModel } from "../models/service.js";
+import { enumFunctionbyRol } from "../helpers/enumRols.js";
 
 export class ServiceController {
   static async getAll(req, res) {
@@ -9,8 +10,27 @@ export class ServiceController {
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
+      const details= {
+        name: "Services",
+        en_name: "services",
+        url: req.originalUrl,
+        rol: req.session.user.rol
+      }
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      res.status(201).render("pages/gestion", { objets: services, details, functions})
+    } catch (err){
+      console.log(err)
+      res.status(404).json({... err})
+    }
+  }
+
+  static async renderService(req, res) {
+    try{
+      const services = await ServiceModel.getAll();
+      if(!services.length) {
+        throw new NotFoundException("Service not found");
+      }
       res.render("pages/services", { services })
-      //res.status(201).json({ services });
     } catch (err){
       res.status(404).json({... err})
     }

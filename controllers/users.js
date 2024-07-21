@@ -1,4 +1,5 @@
 import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
+import { enumFunctionbyRol } from "../helpers/enumRols.js";
 import { UserModel } from "../models/user.js";
 import bcrypt from 'bcryptjs';
 
@@ -9,8 +10,16 @@ export class UserController {
       if(!users.length) {
         throw new NotFoundException("User not found");
       }
-      res.status(201).json({ users });
+      const details= {
+        name: "Utilisateurs",
+        en_name: "users",
+        url: req.originalUrl,
+        rol: req.session.user.rol        
+      }
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      res.status(201).render("pages/gestion", { objets: users, details, functions})
     } catch (err){
+      console.log(err)
       res.status(404).json({... err})
     }
   }

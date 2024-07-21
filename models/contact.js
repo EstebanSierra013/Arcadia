@@ -6,7 +6,7 @@ export class ContactModel {
     try{            
       const sql_filter = Object.keys(params).length ? `WHERE isReplied = ${params.isReplied}` :  "";
       const contacts = await dbArcadia.query(
-        `SELECT * FROM contact ${sql_filter} ORDER BY isReplied, contact_id DESC;`);
+        `SELECT C.contact_id as Id, C.mail as Email, C.title as Titre, C.description as Description, C.isReplied FROM contact as C ${sql_filter} ORDER BY isReplied, contact_id DESC;`);
       return contacts;
     }catch(err){
       throw err;
