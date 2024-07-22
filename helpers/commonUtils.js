@@ -1,3 +1,9 @@
+
+/**
+  * Returns the columns and values ​​for a dynamic SQL query
+  *
+  */
+
 export function formatColumnSetSQL (object)  {
   if (typeof object !== 'object') {
       throw new Error('Invalid input');

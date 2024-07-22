@@ -1,3 +1,8 @@
+/**
+  * Middleware Authentication & RCBA
+  * Use of tokens
+  */
+
 import jwt from 'jsonwebtoken';
 import { TokenVerificationException, UnauthorizedException } from '../helpers/customExceptions.js';
 

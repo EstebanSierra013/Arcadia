@@ -1,3 +1,8 @@
+/**
+  * Verify if an image is in the database
+  * or else add it
+  */
+
 import { ImageModel } from '../models/image.js';
 
 export function imageHandle(){

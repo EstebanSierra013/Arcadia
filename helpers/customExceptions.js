@@ -1,4 +1,9 @@
 
+/**
+  * Handle Errors & Exceptions
+  *
+  */
+
 class CustomException extends Error {
   constructor(name, cause, code = null){
     super()

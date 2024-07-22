@@ -1,6 +1,5 @@
 
 /* GENERAL */
-
 :root {
   --green-color: #20554c;
   --dark-blue-color: #0D2C3B;
@@ -199,8 +198,6 @@ main{
   color: var(--green-color);
 }
 
-
-
 /*CARROUSEL*/
 
 .carousel-inner .carousel-item::before {
@@ -219,52 +216,6 @@ main{
   overflow: hidden;
   height:50vh;
 }
-
-/* FORMS */
-
-
-.form-container{
-  background-color: white;  
-  border-radius: 1rem;
-  color: var(--dark-blue-color);
-}
-
-.form-container textarea{
-  
-  border-radius: .75rem;
-}
-
-.form-control{
-  color: var(--dark-blue-color);
-  background-color: var(--light-yellow-color);
-  border-bottom-color: rgba(0,0,0,.42);
-  box-shadow: none;
-  border: none;
-  border-radius: .2rem .2rem 0 0;
-}
-
-/* BUTTONS */
-
-.btn-arcadia-p{
-  width: 100%;
-  background-color: var(--dark-yellow-color);
-  border-radius: 1rem;
-}
-
-.btn-arcadia-s{
-  width: 100%;
-  background-color: var(--dark-blue-color);
-  border-radius: 1rem;
-  color: white;
-}
-
-.btn-arcadia-gestion{
-  min-width: 10rem;
-  text-align: center;
-  background-color: var(--dark-yellow-color);
-  border-radius: 1rem;
-}
-
 
 /* AUTH */
 
@@ -316,6 +267,49 @@ footer{
   color: var(--dark-blue-color);
 }
 
+/* FORMS */
+
+.form-container{
+  background-color: white;  
+  border-radius: 1rem;
+  color: var(--dark-blue-color);
+}
+
+.form-container textarea{
+  
+  border-radius: .75rem;
+}
+
+.form-control{
+  color: var(--dark-blue-color);
+  background-color: var(--light-yellow-color);
+  border-bottom-color: rgba(0,0,0,.42);
+  box-shadow: none;
+  border: none;
+  border-radius: .2rem .2rem 0 0;
+}
+
+/* BUTTONS */
+
+.btn-arcadia-p{
+  width: 100%;
+  background-color: var(--dark-yellow-color);
+  border-radius: 1rem;
+}
+
+.btn-arcadia-s{
+  width: 100%;
+  background-color: var(--dark-blue-color);
+  border-radius: 1rem;
+  color: white;
+}
+
+.btn-arcadia-gestion{
+  min-width: 10rem;
+  text-align: center;
+  background-color: var(--dark-yellow-color);
+  border-radius: 1rem;
+}
 
 @media only screen and (min-width: 768px) {
 
@@ -370,13 +364,10 @@ footer{
   .banner{
     height: 80vh;
   }
-
    
   .banner-habitats-container-index{
     height: 40vh;
   }
-
-
 
   .btn-arcadia-p, .btn-arcadia-s{
     width: 20%;

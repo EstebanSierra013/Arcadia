@@ -1,3 +1,10 @@
+/**
+  * Enums Rols & Function by rol
+  *
+  */
+
+
+
 export const enumRols =  {
   Administrateur: "admin",
   Employé: "employee",

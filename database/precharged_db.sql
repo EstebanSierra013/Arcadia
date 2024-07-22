@@ -135,11 +135,27 @@ INSERT INTO user (username,password,name,lastname,rol_id) VALUES (
 1
 );
 
-INSERT INTO veterinary_report (date, status,food, quantity, created_by, animal_id) VALUES (
-"14/05/24",
-5,
-"carne",
-10,
-"josesanchez@hotmail.com",
-3
+INSERT INTO review (pseudo, comment) VALUES (
+"alias",
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
+);
+
+INSERT INTO review (pseudo, comment) VALUES (
+"alias3",
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
+);
+
+INSERT INTO review (pseudo, comment) VALUES (
+"alias7",
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
+);
+
+INSERT INTO review (pseudo, comment) VALUES (
+"alias8",
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
+);
+
+INSERT INTO review (pseudo, comment) VALUES (
+"alias1",
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
 );
