@@ -14,12 +14,17 @@
           <h1 id="name_page">Gestion <%= details.name %></h1>
         </div>
       </div>  
-      <div class="flux">
+      <div class="flux p-xl-5">
         <div class="d-flex flex-column p-5 gap-4 gestion-container">
-          <div>           
+          <div>
+            <% if(msg.length != 0) {%>
+              <div class="alert alert-success">
+                <%- msg %>
+              </div>
+            <% }%>           
             <% if(functions[details.en_name] == "all") {%>   
               <div class="text-center">
-                <button type="button" class="btn btn-arcadia-s" data-bs-toggle="modal" data-bs-target="#<%= details.en_name %>-b">Ajouter</button>
+                <button type="button" class="btn btn-arcadia-s" data-bs-toggle="modal" data-bs-target="#<%= details.en_name %>-b" >Ajouter</button>
               </div>           
             <% }; %> 
             <%- include('modal-create', { details, functions }); %> 

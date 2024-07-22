@@ -9,3 +9,4 @@ userRouter.get('/',UserController.getAll);
 userRouter.post('/',validateData(userSchema),UserController.create);
 userRouter.delete('/:username',UserController.delete);
 userRouter.post('/:id',validateData(userSchema),UserController.update);
+userRouter.get('/:id',UserController.getOne);

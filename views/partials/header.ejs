@@ -16,15 +16,18 @@
         <button type="button" class="btn-close btn-close-white position-absolute" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body d-flex justify-content-center">
-        <ul>
+        <ul>          
           <% if(isLogged) {%>
+          <li>
+            <a href="/profile">Profile</a>
+          </li>
           <li>
             <a href="/auth/logout">Desconnexion</a>
           </li>
           <% }else{ %>
-            <li>
-              <a href="/auth/login">Connexion</a>
-            </li>
+          <li>
+            <a href="/auth/login">Connexion</a>
+          </li>
           <% }%>
           <li>
             <a href="/services">Services</a>

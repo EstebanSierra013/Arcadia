@@ -12,10 +12,10 @@
   </div>
   <div class="form-floating mb-3">
     <select class="form-select" id="habitat" aria-label="Default select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option selected></option>
+      <% details.table.forEach(function(rol){ %>      
+      <option value="<%= rol.rol_id %>"><%= rol.rol_name %></option>
+      <% })%>
     </select>
     <label for="habitat">Habitat</label>
   </div>
@@ -40,51 +40,51 @@
   <% break;
   case 'services' : %>
   <div class="form-floating mb-3">    
-    <input type="text" name="name" class="form-control" placeholder="Nom">
+    <input id="Nom" type="text" name="name" class="form-control" placeholder="Nom" required>
     <label for="name" class="form-label">Nom</label>
   </div>
   <div class="form-floating mb-3">    
-    <textarea type="text" name="description" class="form-control" rows="3" placeholder="Description"></textarea>
+    <textarea id="Description" type="text" name="description" class="form-control" rows="3" placeholder="Description" required></textarea>
     <label for="description" class="form-label">Description</label>
   </div>
   <div class="form-floating mb-3">    
-    <input type="time" name="schedule" class="form-control" placeholder="00:00">
+    <input id="Schedule" type="time" name="schedule" class="form-control" placeholder="00:00">
     <label for="schedule" class="form-label">Horaire</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="number" name="duration" class="form-control" placeholder="30">
+    <input id="Duration" type="number" name="duration" class="form-control" placeholder="30">
     <label for="duration" class="form-label">Duration (minutes) </label>
   </div>
   <div class="form-floating mb-3">    
-    <input class="form-control form-control-sm" id="image_path" type="file">
-    <label for="image_path" class="form-label">Image</label>
+    <input id="Image" name="Image" class="form-control form-control-sm" type="file">
+    <label for="Image" class="form-label">Image</label>
   </div>
   <% break;
   case 'users' : %>
   <div class="form-floating mb-3">    
-    <input type="text" name="name" class="form-control" placeholder="Prenom">
+    <input id="Prenom"  type="text" name="name" class="form-control" placeholder="Prenom" required>
     <label for="name" class="form-label">Prenom</label>
   </div>
   <div class="form-floating mb-3">    
-    <input type="text" name="lastname" class="form-control" placeholder="Nom">
+    <input id="Nom" type="text" name="lastname" class="form-control value-form" placeholder="Nom" required>
     <label for="lastname" class="form-label">Nom</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" name="username" class="form-control" placeholder="name@example.com">
+    <input id="Username" type="text" name="username" class="form-control value-form " placeholder="name@example.com" required>
     <label for="username" class="form-label">Email</label>      
   </div>  
   <div class="form-floating mb-3">
-    <input type="password" name="password" class="form-control" placeholder="password">
+    <input type="password" name="password" class="form-control value-form" placeholder="password" required>
     <label for="password" class="form-label">Mot de passe</label>    
   </div>
   <div class="form-floating mb-3">
-    <select class="form-select" id="rol" aria-label="Default select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+    <select id="Role" class="form-select" name="rol_id" required>
+      <option selected ></option>
+      <% details.table.forEach(function(rol){ %>      
+      <option value="<%= rol.rol_id %>"><%= rol.rol_name %></option>
+      <% })%>
     </select>
-    <label for="rol">Role</label>
+    <label for="Role">Role</label>
   </div>
   <% break;
 }%>

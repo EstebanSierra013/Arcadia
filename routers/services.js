@@ -3,7 +3,7 @@ import { ServiceController } from "../controllers/services.js"
 import { serviceSchema } from "../helpers/schemas.js";
 import { validateData } from "../middlewares/validateResult.js";
 import { imageHandle } from "../middlewares/imageHandle.js";
-
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 export function serviceRouterPrivated(){
   const serviceRouter = Router();
@@ -16,6 +16,6 @@ export function serviceRouterPrivated(){
 
 export function serviceRouterPublic(){  
   const serviceRouter = Router();
-  serviceRouter.get('/',ServiceController.renderService);
+  serviceRouter.get('/',authMiddleware(),ServiceController.renderService);
   return serviceRouter;
 }

@@ -2,6 +2,7 @@ import { Router } from "express"
 import { ContactController } from "../controllers/contact.js"
 import { validateData } from "../middlewares/validateResult.js";
 import { contactSchema } from "../helpers/schemas.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 export function contactRouterPrivated(){
   const contactRouter = Router();
@@ -13,7 +14,7 @@ export function contactRouterPrivated(){
 
 export function contactRouterPublic(){  
   const contactRouter = Router();
-  contactRouter.get('/',ContactController.renderContact);
+  contactRouter.get('/',authMiddleware(),ContactController.renderContact);
   contactRouter.post('/',validateData(contactSchema),ContactController.create);
   return contactRouter;
 }

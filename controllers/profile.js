@@ -10,13 +10,13 @@ export class ProfileController {
   static async getProfile (req, res){
     try{
       const { username, rol } = req.session.user
-      const [ user ]  = await UserModel.getOne({ username })      
+      const [ user ]  = await UserModel.getOne({ username }) 
       user.en_rol = rol;
       user.url = req.originalUrl;
       const paths = enumPathbyRol[rol];
       let isLogged = false;
 
-      if(req.session){
+      if(req.session.user){
         isLogged = true;
       }
       res.render("pages/profile", { user , paths, isLogged}); 

@@ -3,9 +3,8 @@ import z from "zod"
 export const serviceSchema = z.object({
   name: z.string(),
   description: z.string(),
-  schedule: z.string().time().nullable(),
-  duration: z.number().nullable(),
-  image_path: z.string().nullable()
+  schedule: z.string().nullable(),
+  duration: z.coerce.number().nullable()
 })
 
 export const userSchema = z.object({
@@ -13,7 +12,7 @@ export const userSchema = z.object({
   password: z.string().min(process.env.MIN_PASSWORD_LENGTH),
   name: z.string(),
   lastname: z.string(),
-  rol_id: z.number()
+  rol_id: z.coerce.number()
 })
 
 export const authSchema = z.object({
@@ -44,7 +43,7 @@ export const contactSchema = z.object({
 export const animalSchema = z.object({
   name: z.string(),
   species: z.string(),
-  habitat_id: z.number().positive().nullable(),
+  habitat_id: z.coerce.number().positive().nullable(),
   image_path: z.string().nullable(),
   status: z.number().nullish()
 })

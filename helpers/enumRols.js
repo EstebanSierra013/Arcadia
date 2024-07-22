@@ -8,7 +8,7 @@ export const enumRols =  {
 export const enumPathbyRol = {
   admin: ["Users", "Services", "Habitats", "Animals", "Reports"],
   veterinary: ["Reports", "Habitats"],
-  employee: ["Reviews", "Services", "Reports"]
+  employee: ["Reviews", "Services", "Reports", "Contact"]
 }
 
 export const enumFunctionbyRol = {
@@ -26,7 +26,8 @@ export const enumFunctionbyRol = {
   employee: {
     reviews: "validate", 
     services: "all",
-    reports: "validate"
+    reports: " all",
+    contact: "validate",
   }
 }
 

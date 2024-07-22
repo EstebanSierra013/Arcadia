@@ -9,17 +9,17 @@ import { enumRols } from "../helpers/enumRols.js";
 
 export function habitatRouterPrivated(){
   const habitatRouter = Router();
-  habitatRouter.get('/',authMiddleware(),HabitatController.getAll);
+  habitatRouter.get('/',authMiddleware([enumRols.Administrateur,enumRols.Vétérinaire]),HabitatController.getAll);
   habitatRouter.post('/',authMiddleware([enumRols.Administrateur]),validateData(habitatSchema),imageHandle(),HabitatController.create);
   habitatRouter.delete('/:ids',authMiddleware([enumRols.Administrateur]),HabitatController.delete);
-  habitatRouter.post('/:id',authMiddleware(),validateData(habitatSchema),imageHandle(),HabitatController.update);
+  habitatRouter.post('/:id',authMiddleware([enumRols.Administrateur,enumRols.Vétérinaire]),validateData(habitatSchema),imageHandle(),HabitatController.update);
   return habitatRouter;
 }
 
 export function habitatRouterPublic(){  
   const habitatRouter = Router();
-  habitatRouter.get('/',HabitatController.renderHabitat);
-  habitatRouter.get('/:id',AnimalController.getAllByHabitat, HabitatController.getOne);
+  habitatRouter.get('/',authMiddleware(),HabitatController.renderHabitat);
+  habitatRouter.get('/:id',authMiddleware(),AnimalController.getAllByHabitat, HabitatController.getOne);
   return habitatRouter;
 }
 

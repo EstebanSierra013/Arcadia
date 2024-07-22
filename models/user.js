@@ -16,7 +16,7 @@ export class UserModel {
   static async getOne({ username }){
     try{
       const user = await dbArcadia.query(`SELECT 
-        U.username as Username, U.name as Prenom, U.lastname as Nom, U.password,  R.rol_name as Role
+        U.username as Username, U.name as Prenom, U.lastname as Nom, U.password, R.rol_name as Role
         FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id
         WHERE U.username = ?;`,
         [username]
@@ -40,12 +40,12 @@ export class UserModel {
     }
   }
 
-  static async update( {input, id} ){
+  static async update( {input, username} ){
     const { columnsSet, values } = formatColumnSetSQL(input);
     try {
       const result = await dbArcadia.query(
         `UPDATE user SET ${columnsSet} WHERE username = ?;`,
-        [...values, id]
+        [...values, username]
       )
       return result;   
     } catch (err) {     

@@ -14,7 +14,7 @@
           <h1 id="name_page">Bienvenue, <%= user.Prenom + ' ' +user.Nom %></h1>
         </div>
       </div>
-      <div class="d-flex justify-content-evenly profil-container p-4">
+      <div class="d-flex justify-content-center gap-5 profil-container p-4">
         <div class="d-inline">
           <img src= "/assets/img/user_icon.svg" alt="Image user">
         </div>
@@ -24,11 +24,11 @@
           <p><%= user.Username %></p>
         </div>
       </div>     
-      <div class="d-flex flex-column p-4 gap-2 flux">
-        <h3>Gestion</h3>
-        <div class="d-flex non-wrap gap-2">
+      <div class="d-flex flex-column gap-3 align-items-xl-center flux">
+        <h3 class="text-center">Gestion</h3>
+        <div class="d-flex gap-2 justify-content-lg-center buttons-gestion-container">
           <% paths.forEach(function(path){ %>
-          <a href= "<%= user.en_rol %>/<%= path.toLowerCase() %>" class="btn btn-arcadia-p" id="<%= user.en_rol %>-<%=path%>-l"><%= path %></a> 
+          <a href= "<%= user.en_rol %>/<%= path.toLowerCase() %>" class="btn btn-arcadia-gestion" id="<%= user.en_rol %>-<%=path%>-l"><%= path %></a> 
           <% }) %> 
         </div>   
       </div>

@@ -7,7 +7,7 @@ export class ContactController {
     try{
       let isLogged = false;
 
-      if(req.session){
+      if(req.session.user){
         isLogged = true;
       }
       res.render("pages/contact",{ isLogged });

@@ -39,16 +39,18 @@
       
       <div class="d-flex flex-column pt-5 text-center reviews-container-index">  
         <h2>Opinions de Nos Visiteurs</h2>
-        <div class="list-reviews-container-index p-5 flux">
+        <div class="list-reviews-container-index flux">
           <div class="d-flex flex-column gap-4 scroll-container">
             <%reviews.forEach(function(review){ %>
               <%- include('../partials/card-reviews', { review }); %>
             <%}); %>
           </div>
         </div>
-        <div class="d-flex flex-column gap-3 form_review_container-index p-5 flux">
+        <div class="d-flex flex-column gap-3 form_review_container-index flux">
           <p>Votre expérience au Zoo d'Arcadia est précieuse pour nous. Nous vous invitons à partager vos impressions et vos suggestions pour nous aider à continuer à améliorer nos services et nos installations.</p>
-          <button type="button" class="btn btn-arcadia-s" data-bs-toggle="modal" data-bs-target="#reviews-b">Commenter</button>
+          <div class="text-center">
+            <button type="button" class="btn btn-arcadia-s" data-bs-toggle="modal" data-bs-target="#reviews-b">Commenter</button>
+          </div>
           <%- include('../partials/forms/modal-reviews'); %>
         </div>
       </div>

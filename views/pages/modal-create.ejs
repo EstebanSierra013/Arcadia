@@ -5,10 +5,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<%= details.url %>" id="form-gestion" onsubmit="handleFormSubmit(event, this)">
+        <form action="<%= details.url %>" id="form-gestion" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
           <%- include('../partials/schemas', { details }); %> 
         <div class="text-center">
-          <button type="submit" class="btn btn-arcadia-p mt-5">Envoyer</button>
+          <button type="submit" class="btn btn-arcadia-p mt-5" data-bs-dismiss="modal">Envoyer</button>
         </div>    
         </form>
       </div>

@@ -258,6 +258,12 @@ main{
   color: white;
 }
 
+.btn-arcadia-gestion{
+  min-width: 10rem;
+  text-align: center;
+  background-color: var(--dark-yellow-color);
+  border-radius: 1rem;
+}
 
 
 /* AUTH */
@@ -278,6 +284,10 @@ main{
 .profil-container img{
   width: 8rem;
   height: auto;
+}
+
+.buttons-gestion-container{
+  overflow-x: scroll;
 }
 
 /* GESTION - TABLE */
@@ -308,10 +318,6 @@ footer{
 
 
 @media only screen and (min-width: 768px) {
-
-  .flux{
-    padding: 5rem 10rem;
-  }
 
   #offcanvas {
     width: 25%;
@@ -365,9 +371,7 @@ footer{
     height: 80vh;
   }
 
-  
-  
-  
+   
   .banner-habitats-container-index{
     height: 40vh;
   }

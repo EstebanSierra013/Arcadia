@@ -19,7 +19,7 @@ export class AnimalController {
       const functions = enumFunctionbyRol[req.session.user.rol];
       let isLogged = false;
 
-      if(req.session){
+      if(req.session.user){
         isLogged = true;
       }
       res.status(201).render("pages/gestion", { objets: animals, details, functions, isLogged})

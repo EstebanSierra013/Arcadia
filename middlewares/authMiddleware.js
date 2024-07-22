@@ -7,7 +7,7 @@ export function authMiddleware(roles = []){
     req.session = { user: null }    
     try {
       if (!token) {
-        return res.status(302).redirect("/auth/login")
+        return (!roles.length) ? next() : res.status(302).redirect("/auth/login");
         throw new TokenVerificationException("User not logged in");
       }
       const data = jwt.verify(token, process.env.SECRET_JWT_KEY);

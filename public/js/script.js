@@ -1,9 +1,9 @@
-async function handleFormDataAsJson({ url, formData, method}) {
+async function handleFormDataAsJson({ url, formData }) {
 	const plainFormData = Object.fromEntries(formData.entries());
 	const formDataJsonString = JSON.stringify(plainFormData);
 	
 	const fetchOptions = {
-		method: method,
+		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 			Accept: "application/json",
@@ -18,12 +18,13 @@ async function handleFormDataAsJson({ url, formData, method}) {
 			const errorMessage = await response.text();
 			throw new Error(errorMessage);
 		}		
+		window.location.reload();
 	}catch(err){
 		console.log(err)
 	}
 }
 
-async function handleFormSubmit(event, method = "POST") {
+async function handleFormSubmit(event,) {
   event.preventDefault();
 	
   const form = event.currentTarget;
@@ -31,51 +32,88 @@ async function handleFormSubmit(event, method = "POST") {
 
 	try {
 		const formData = new FormData(form);
-		await handleFormDataAsJson({ url, formData, method});
+		await handleFormDataAsJson({ url, formData});
 		form.reset();
 	} catch (error) {
 		console.error(error);
 	}  
 }
 
-function backAway(){
-			history.back();
-}
-
-/*
-async function handleFetchGet(event){
+async function handleFetchDelete(event) {
 	event.preventDefault();
 
-	const link = event.currentTarget;
-	const url = link.href;
-	const split_url = url.split('/')
-	const ressource = split_url[split_url.length - 1]
+	const button = event.currentTarget;
+  const url = button.href;
 
-	const response = await fetch(url);
-	const data = await response.json()
-	createSection(data, ressource)
-}
+	const fetchOptions = {
+		method: "DELETE"
+	};
 
-
-function hideSection(event){
-
-	event.preventDefault();
-
-	const link = event.currentTarget;
-	const id = link.id.split("-").slice(0,2).join("-")+"-s";
-
-	let section = document.getElementById(id);
-	let content = document.getElementsByClassName("content-section")
-	
-	for (const [key, value] of Object.entries(content)) {		
-		value.style.display = "none"
+	try{
+		const response = await fetch(url,fetchOptions);		
+		
+		if (!response.ok) {
+			const errorMessage = await response.text();
+			throw new Error(errorMessage);
+		}		
+		window.location.reload();
+	}catch(err){
+		window.location.reload();
+		console.log(err)
 	}
-
-	section.style.display = "flex";
 }
-*/
-         
-              
-          
 
-          
+async function handleFetchEdit(event) {
+	event.preventDefault();
+
+	const button = event.currentTarget;
+  const url = button.href;
+
+	try{
+		const response = await fetch(url);		
+		
+		if (!response.ok) {
+			const errorMessage = await response.text();
+			throw new Error(errorMessage);
+		}		
+		
+		const { objet } = await response.json();
+		handleFormEdit(objet[0],url)
+	}catch(err){
+		window.location.reload();
+		console.log(err)
+	}
+}
+
+function handleFormEdit(data,url){
+	console.log(url)
+	for(const [key, value] of Object.entries(data)){
+		document.getElementById(key).value = value;
+	}
+	document.getElementById("form-gestion").action = url;
+}
+
+async function handleFetchGet(event) {
+	event.preventDefault();
+
+	const button = event.currentTarget;
+  const url = button.href;
+	console.log(url)
+	
+	const fetchOptions = {
+		method: "GET"
+	};
+
+	try{
+		const response = await fetch(url,fetchOptions);		
+		console.log(response)
+		if (!response.ok) {
+			const errorMessage = await response.text();
+			throw new Error(errorMessage);
+		}		
+		
+	}catch(err){
+		window.location.reload();
+		console.log(err)
+	}
+}

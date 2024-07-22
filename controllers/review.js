@@ -1,6 +1,6 @@
 import { ReviewModel } from "../models/review.js";
 import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
-
+import { enumFunctionbyRol } from "../helpers/enumRols.js";
 export class ReviewController {
 
   static async renderNew(req, res) {
@@ -17,7 +17,21 @@ export class ReviewController {
       if(!reviews.length) {
         throw new NotFoundException("Review not found");
       }
-      res.status(201).json({ reviews });
+      const details= {
+        name: "Opinions",
+        en_name: "reviews",
+        url: req.originalUrl,
+        rol: req.session.user.rol,  
+      }
+
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      let isLogged = false;
+
+      if(req.session.user){
+
+        isLogged = true;
+      }
+      res.status(201).render("pages/gestion", { objets: reviews, details, functions, isLogged})
     } catch (err){
       res.status(404).json({... err})
     }
@@ -35,6 +49,7 @@ export class ReviewController {
 
   static async approveReview(req, res) {
     const { id } = req.params;
+    
     try{
       const { affectedRows }  = await ReviewModel.approveReview({ review_id: id });
       if (!affectedRows) throw new UpdateFailedException("Review approve failed");
