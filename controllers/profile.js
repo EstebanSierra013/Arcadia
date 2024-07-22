@@ -16,7 +16,6 @@ export class ProfileController {
       const paths = enumPathbyRol[rol];
       res.render("pages/profile", { user , paths}); 
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }

@@ -1,0 +1,55 @@
+<div id="carouselBasicExample-<%= name %>" class="carousel slide carousel-fade">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselBasicExample-<%= name %>"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselBasicExample-<%= name %>"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselBasicExample-<%= name %>"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src= "<%= objets[0].Image %>" class="d-block w-100" alt="Image <%= objets[0].Nom %>"/>
+        <div class="carousel-caption">
+          <h5><%= objets[0].Nom %></h5>
+        </div>
+      </div>
+
+    <% objets.slice(1,3).forEach(function(objet){ %>
+      <div class="carousel-item">
+        <img src="<%= objet.Image %>" class="d-block w-100" alt="Image <%= objet.Nom %>"/>
+        <div class="carousel-caption">
+          <h5><%= objet.Nom %></h5>
+        </div>
+      </div>
+    <% }); %>
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselBasicExample-<%= name %>" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselBasicExample-<%= name %>" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+</div>

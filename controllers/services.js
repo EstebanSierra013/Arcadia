@@ -19,7 +19,6 @@ export class ServiceController {
       const functions = enumFunctionbyRol[req.session.user.rol];
       res.status(201).render("pages/gestion", { objets: services, details, functions})
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }

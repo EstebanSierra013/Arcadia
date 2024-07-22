@@ -1,21 +1,22 @@
 <div class="modal fade" id="reviews-b" tabindex="-1" aria-labelledby="reviews-b" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content form-container">
       <div class="modal-header">
         <h5 class="modal-title">Nouveau opinion</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/reviews" onsubmit="handleFormSubmit(event, this)">
-          <div class="mb-3">
-            <label for="Pseudo" class="form-label">Pseudo</label>
+          <div class="form-floating mb-3">            
             <input type="text" name="pseudo" class="form-control" placeholder="Pseudo">
+            <label for="Pseudo" class="form-label">Pseudo</label>
           </div>
-          <div class="mb-3">
+          <div class="form-floating mb-3">
+            <textarea type="text" name="description" class="form-control" style="height: 100px" placeholder="Commentaire"></textarea>
             <label for="Comment" class="form-label">Comment</label>
-            <input type="text" name="comment" class="form-control" placeholder="Comment">
+            
           </div>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Envoyer</button>
+          <button type="submit" class="btn btn-arcadia-p" data-bs-dismiss="modal">Envoyer</button>
         </form>
       </div>
     </div>

@@ -19,7 +19,6 @@ export class UserController {
       const functions = enumFunctionbyRol[req.session.user.rol];
       res.status(201).render("pages/gestion", { objets: users, details, functions})
     } catch (err){
-      console.log(err)
       res.status(404).json({... err})
     }
   }

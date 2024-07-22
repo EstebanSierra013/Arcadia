@@ -1,6 +1,22 @@
-<div class="card review" style="--i:<%= i%>">
-    <div class="card-body">
-      <h4 class="card-title"><%= review.pseudo %></h4>
-      <p class="card-text"><%= review.comment%></p>
+<div class="row d-flex justify-content-center">
+  <div class="col">
+    <div class="card">
+      <div class="card-body m-3">
+        <div class="row p-1">
+          <div class="col-4 d-flex justify-content-center align-items-center">
+            <img src="/assets/img/user_icon.svg"
+              class="rounded-circle img-fluid shadow-1" alt="avatar" />
+          </div>
+          <div class="col-8 d-flex align-items-center">
+            <p><strong><%= review.Pseudo %></strong></p>     
+          </div>    
+        </div>    
+        <div class="row">  
+          <div class="col-lg-8 mt-3 text-start">
+            <p><%= review.Commentaire %></p>            
+          </div>
+        </div> 
+      </div>
     </div>
+  </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="modal fade" id="<%= details.en_name %>-b" tabindex="-1" aria-labelledby="<%= details.en_name %>-b" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content form-container">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<%= details.url %>" class="form-container" id="form-gestion" onsubmit="handleFormSubmit(event, this)">
+        <form action="<%= details.url %>" id="form-gestion" onsubmit="handleFormSubmit(event, this)">
           <%- include('../partials/schemas', { details }); %> 
         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Envoyer</button>
         </form>
