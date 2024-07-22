@@ -17,7 +17,13 @@ export class UserController {
         rol: req.session.user.rol        
       }
       const functions = enumFunctionbyRol[req.session.user.rol];
-      res.status(201).render("pages/gestion", { objets: users, details, functions})
+      let isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+
+      res.status(201).render("pages/gestion", { objets: users, details, functions, isLogged})
     } catch (err){
       res.status(404).json({... err})
     }

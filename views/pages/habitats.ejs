@@ -12,17 +12,17 @@
         <div class="banner-overlay"></div>
         <div class="text-center banner-title">
           <h1 id="name_page">Habitats</h1>
-          <h2>Explorez les mondes naturels du Zoo d'Arcadia</h2>
+          <h5>Explorez les mondes naturels du Zoo d'Arcadia</h5>
         </div>
       </div>
       <div class="introduction-container p-5 flux">
-        <p>Bienvenue dans la section des habitats du Zoo d'Arcadia. Chaque habitat est soigneusement conçu pour recréer les écosystèmes naturels où nos animaux résident. Explorez ces environnements fascinants et découvrez la diversité de la vie sauvage que nous abritons.
+        <p>Chaque habitat est soigneusement conçu pour recréer les écosystèmes naturels où nos animaux résident. Explorez ces environnements fascinants et découvrez la diversité de la vie sauvage que nous abritons.
         </p>
       </div>
       <div class="d-flex flex-column gap-4 p-5 list-habitats-container">
-        <% var i = 1; habitats.forEach(function(habitat){ %>
-          <%- include('../partials/card-list', { objet: habitat, i }); %>
-        <% i++; }); %>  
+        <% habitats.forEach(function(habitat){ %>
+          <%- include('../partials/card-list-habitats', { objet: habitat }); %>
+        <% }); %>  
       </div> 
     </main>
     <footer>

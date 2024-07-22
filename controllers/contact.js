@@ -5,7 +5,12 @@ export class ContactController {
 
   static async renderContact(req, res) {
     try{
-      res.render("pages/contact");
+      let isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+      res.render("pages/contact",{ isLogged });
     } catch (err){
       res.status(404).json({... err})
     }

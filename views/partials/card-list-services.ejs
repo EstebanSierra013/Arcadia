@@ -1,0 +1,16 @@
+<div class="container card-list card-list-services p-2">
+  <div class="row row-cols-1 row-cols-md-2 g-5">
+    <div class="col col-md-7 d-flex align-items-center">
+      <img src="<%= objet.Image %>" class="d-block w-100" alt="Image <%= objet.Nom%>">
+    </div>
+    <div class="col col-md-5 p-3 justify-content-center">
+      <h3 class="text-center my-2 my-md-3 my-lg-4"><%= objet.Nom %></h3>
+      <p class="fw-bolder">Description:</p><p><%= objet.Description %></p>
+      <% if(objet.Duration){ %>
+        <p><p class="fw-bolder">Horaire:</p><p><%= objet.Horaire %></p>
+        <p><p class="fw-bolder">Duration:</p><p><%= objet.Duration %></p>
+      <% }; %>
+    </div>
+  </div>
+</div>
+

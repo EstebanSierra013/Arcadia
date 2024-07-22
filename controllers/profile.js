@@ -14,8 +14,14 @@ export class ProfileController {
       user.en_rol = rol;
       user.url = req.originalUrl;
       const paths = enumPathbyRol[rol];
-      res.render("pages/profile", { user , paths}); 
+      let isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+      res.render("pages/profile", { user , paths, isLogged}); 
     } catch (err){
+      console.log(err)
       res.status(404).json({... err})
     }
   }

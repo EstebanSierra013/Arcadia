@@ -12,17 +12,17 @@
         <div class="banner-overlay"></div>
         <div class="text-center banner-title">
           <h1 id="name_page">Services</h1>
-          <h2>Explorez les mondes naturels du Zoo d'Arcadia</h2>
+          <h2>Des expériences inoubliables pour toute la famille</h2>
         </div>
       </div>
       <div class="introduction-container p-5 flux">
-        <p>Bienvenue dans la section des habitats du Zoo d'Arcadia. Chaque habitat est soigneusement conçu pour recréer les écosystèmes naturels où nos animaux résident. Explorez ces environnements fascinants et découvrez la diversité de la vie sauvage que nous abritons.
+        <p>Nous offrons une variété d'activités et de commodités pour enrichir votre visite et rendre votre expérience au zoo aussi agréable que possible. Que vous souhaitiez déguster un repas délicieux dans nos restaurants, découvrir les habitats fascinants avec nos guides experts, ou profiter d'une balade en petit train autour du parc, nous avons quelque chose pour chacun. Découvrez tous les services que nous proposons pour une journée mémorable en famille ou entre amis.
         </p>
       </div>
-      <div class="d-flex flex-column gap-4 p-5 list-services-container">
-        <% var i = 1; services.forEach(function(service){ %>
-          <%- include('../partials/card-list', { objet: service, i }); %>
-        <% i++; }); %>  
+      <div class="d-flex flex-column gap-4 p-5 list-habitats-container">
+        <% services.forEach(function(service){ %>
+          <%- include('../partials/card-list-services', { objet: service }); %>
+        <% }); %>  
       </div> 
     </main>
     <footer>

@@ -17,7 +17,13 @@ export class ServiceController {
         rol: req.session.user.rol
       }
       const functions = enumFunctionbyRol[req.session.user.rol];
-      res.status(201).render("pages/gestion", { objets: services, details, functions})
+      let isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+
+      res.status(201).render("pages/gestion", { objets: services, details, functions, isLogged})
     } catch (err){
       res.status(404).json({... err})
     }
@@ -29,7 +35,13 @@ export class ServiceController {
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
-      res.render("pages/services", { services })
+      const isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+
+      res.render("pages/services", { services, isLogged })
     } catch (err){
       res.status(404).json({... err})
     }

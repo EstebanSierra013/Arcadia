@@ -14,7 +14,13 @@ export class IndexController {
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
-      res.render('pages/index', { services, habitats, animals, reviews });
+      let isLogged = false;
+
+      if(req.session){
+        isLogged = true;
+      }
+
+      res.render('pages/index', { services, habitats, animals, reviews, isLogged });
       //res.status(201).json({ services, reviews });
     } catch (err){
       res.status(404).json({... err})

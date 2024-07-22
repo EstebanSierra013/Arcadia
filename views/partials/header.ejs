@@ -17,18 +17,25 @@
       </div>
       <div class="offcanvas-body d-flex justify-content-center">
         <ul>
+          <% if(isLogged) {%>
           <li>
-            <a href="/auth/login">Connexion</a>
+            <a href="/auth/logout">Desconnexion</a>
           </li>
+          <% }else{ %>
+            <li>
+              <a href="/auth/login">Connexion</a>
+            </li>
+          <% }%>
           <li>
             <a href="/services">Services</a>
           </li>
           <li>
             <a href="/habitats">Habitats</a>
-          </li>
+          </li>          
           <li>
             <a href="/contact">Contact</a>
-          </li>    
+          </li>  
+          
         </ul>
       </div>      
     </div>

@@ -16,20 +16,25 @@
         <p>Plongez dans un monde merveilleux où la nature prend vie. Au Zoo d'Arcadia, nous avons recréé des habitats naturels fascinants pour abriter une incroyable diversité d'animaux. Explorez, apprenez et émerveillez-vous devant la beauté de la faune mondiale.</p>
       </div>
       <div class="d-inline-flex flex-column habitats-container-index">        
-        <div class="d-flex flex-column text-center banner-habitats-container-index pt-5">
+        <div class="d-flex flex-column justify-content-md-center text-center banner-habitats-container-index pt-5">
           <h2>Découvrez Nos Habitats</h2>      
         </div>
         <div class="d-flex gap-4 flex-column py-5 flux">
           <p>Nos habitats soigneusement conçus vous permettent d'explorer les écosystèmes les plus emblématiques du monde. Chaque habitat offre une expérience immersive unique, vous rapprochant des animaux et de leur environnement naturel.</p>        
           <%- include('../partials/carrousel', { objets: habitats, name: "habitats" }); %>   
-          <a href= "/habitats" class="btn btn-arcadia-p" >Voir plus</a>        
+          <div class="text-center">
+            <a href= "/habitats" class="btn btn-arcadia-p" >Voir plus</a>   
+          </div>                   
         </div>        
       </div>
-      <div class="d-flex flex-column p-5 gap-4 services-container-index flux ">  
+      <div class="d-flex flex-column gap-4 services-container-index flux ">  
         <h2>Profitez de Nos Services</h2>
         <p>Nous proposons une gamme de services et d'expériences pour enrichir votre visite. Découvrez tout ce que le Zoo d'Arcadia a à offrir pour rendre votre journée inoubliable.</p>
         <%- include('../partials/carrousel', { objets: services, name: "services" }); %> 
-        <a href= "/services" class="btn btn-arcadia-p" >Voir plus</a>
+        <div class="text-center">
+          <a href= "/services" class="btn btn-arcadia-p" >Voir plus</a>
+        </div>    
+        
       </div>
       
       <div class="d-flex flex-column pt-5 text-center reviews-container-index">  

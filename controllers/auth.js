@@ -47,6 +47,6 @@ export class AutheticationController {
     }
   }
   static async logout(req, res) {
-    res.clearCookie('access_token').json({ message: "Logout" });
+    res.clearCookie('access_token').redirect("/");
   }
 }
