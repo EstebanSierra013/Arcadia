@@ -5,7 +5,7 @@ export class HabitatModel {
   static async getAll(){
     try{
       const habitat = await dbArcadia.query(
-        `SELECT H.habitat_id as Id, H.name as Nom, H.description as Description, H.habitat_comment as Commentaire, I.image_path as Image FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id;`);
+        `SELECT H.habitat_id as Id, H.name as Nom, H.description as Description, H.habitat_comment as Commentaire, I.image_path as Image FROM habitat H LEFT JOIN image I ON H.image_id = I.image_id;`);
       return habitat;
     }catch(err){
       throw err;
@@ -15,7 +15,7 @@ export class HabitatModel {
   static async getOne({ habitat_id }){
     try{
       const habitat = await dbArcadia.query(
-        `SELECT H.*, I.image_path FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id
+        `SELECT H.habitat_id as Id, H.name as Nom, H.description as Description, I.image_path as Image FROM habitat H LEFT JOIN image I  ON H.image_id = I.image_id
         WHERE H.habitat_id = ?;`,
         [habitat_id]
       );

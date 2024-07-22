@@ -117,3 +117,14 @@ async function handleFetchGet(event) {
 		console.log(err)
 	}
 }
+
+async function showInfo(event){
+	event.preventDefault();
+	
+	const button = event.currentTarget;
+  const name = button.id;
+
+	console.log(name)
+
+	document.getElementById(`${name}-info`).style.display = "block";
+}

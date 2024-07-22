@@ -5,11 +5,6 @@
   </head>
   <body>
     <main>
-      <% if(msg.length != 0) {%>
-        <div class="alert alert-success">
-          <%- msg %>
-        </div>
-      <% }%>
       <div class="d-flex flex-column gap-2 justify-content-end justify-content-md-center login-container flux ">
         <a class="text-center" href="/">
           <img src="/assets/img/logo_Arcadia.png" alt="Logo Arcadia Zoo">
@@ -28,7 +23,9 @@
               <label for="title" class="form-label">Mot de passe</label>
               <input type="password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-arcadia-p mt-5">Se connecter</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-arcadia-p mt-5">Se connecter</button>
+            </div>            
           </form>
         </div>          
       </div>

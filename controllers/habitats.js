@@ -57,7 +57,12 @@ export class HabitatController {
       if(!habitat.length) {
         throw new NotFoundException("Habitat not found");
       }
-      res.status(201).json({ habitat, animals });
+      let isLogged = false;
+      
+      if(req.session.user){
+        isLogged = true;
+      }
+      res.status(201).render("pages/animals",{ objet: habitat[0], animals, isLogged})
     } catch (err){
       res.status(404).json({... err})
     }
