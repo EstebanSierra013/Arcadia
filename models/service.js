@@ -12,7 +12,22 @@ export class ServiceModel {
       throw err;
     }
   }
-    
+  
+  static async getOne({ service_id }){
+    try{
+      debugger
+      const service = await dbArcadia.query(`SELECT 
+        S.service_id as Id, S.name as Nom, S.description as Description, S.schedule as Horaire, S.duration as Duration, 
+        I.image_path as Image FROM service S LEFT JOIN image I  ON S.image_id = I.image_id
+        WHERE S.service_id = ?;`,
+        [service_id]
+      );
+      return service;
+    }catch(err){
+      throw err;
+    }
+  }
+
   static async create({ input }){
     const { name, description, schedule, duration, image_id } = input;
     try {

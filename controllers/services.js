@@ -14,16 +14,29 @@ export class ServiceController {
         name: "Services",
         en_name: "services",
         url: req.originalUrl,
-        rol: req.session.user.rol
+        rol: req.session.service.rol
       }
-      const functions = enumFunctionbyRol[req.session.user.rol];
+      const functions = enumFunctionbyRol[req.session.service.rol];
       let isLogged = false;
 
-      if(req.session.user){
+      if(req.session.service){
         isLogged = true;
       }
       
       res.status(201).render("pages/gestion", { objets: services, details, functions, isLogged})
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
+  static async getOne(req, res) {
+    const { id } = req.params
+    try{
+      const service = await ServiceModel.getOne( { service_id : id } );
+      if(!service.length) {
+        throw new NotFoundException("Service not found");
+      }
+      res.status(201).json({ objet: service })
     } catch (err){
       res.status(404).json({... err})
     }
@@ -37,7 +50,7 @@ export class ServiceController {
       }
       let isLogged = false;
 
-      if(req.session.user){
+      if(req.session.service){
         isLogged = true;
       }
       

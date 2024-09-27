@@ -44,13 +44,25 @@ export class HabitatController {
       }
 
       res.render("pages/habitats", { habitats, isLogged })
-      //res.status(201).json({ habitats });
     } catch (err){
       res.status(404).json({... err})
     }
   }
 
   static async getOne(req, res) {
+    const { id } = req.params;
+    try{
+      const habitat = await HabitatModel.getOne({habitat_id: id});
+      if(!habitat.length) {
+        throw new NotFoundException("Habitat not found");
+      }
+      res.status(201).json({ objet: habitat})
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
+  static async renderOneHabitat(req, res) {
     const { id, animals } = req.params;
     try{
       const habitat = await HabitatModel.getOne({habitat_id: id});

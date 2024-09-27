@@ -1,12 +1,14 @@
 import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
 import { AnimalModel } from "../models/animal.js";
 import { ImageModel } from "../models/image.js";
+import { HabitatModel } from "../models/habitat.js";
 import { enumFunctionbyRol } from "../helpers/enumRols.js";
 
 export class AnimalController {
   static async getAll(req, res) {
     try{
       const animals = await AnimalModel.getAll();
+      const habitats = await HabitatModel.getAll();
       if(!animals.length) {
         throw new NotFoundException("Animal not found");
       }
@@ -14,7 +16,8 @@ export class AnimalController {
         name: "Animals",
         en_name: "animals",
         url: req.originalUrl,
-        rol: req.session.user.rol
+        rol: req.session.user.rol,
+        table: habitats
       }
       const functions = enumFunctionbyRol[req.session.user.rol];
       let isLogged = false;

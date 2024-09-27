@@ -24,7 +24,7 @@ async function handleFormDataAsJson({ url, formData }) {
 	}
 }
 
-async function handleFormSubmit(event,) {
+async function handleFormSubmit(event) {
   event.preventDefault();
 	
   const form = event.currentTarget;

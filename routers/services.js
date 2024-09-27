@@ -11,6 +11,7 @@ export function serviceRouterPrivated(){
   serviceRouter.post('/',validateData(serviceSchema),imageHandle(),ServiceController.create);
   serviceRouter.delete('/:ids',ServiceController.delete);
   serviceRouter.post('/:id',validateData(serviceSchema),imageHandle(),ServiceController.update);
+  serviceRouter.get('/:id',ServiceController.getOne);
   return serviceRouter;
 }
 

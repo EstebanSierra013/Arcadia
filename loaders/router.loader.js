@@ -18,7 +18,6 @@ export class RouterLoader {
     app.use('/services',serviceRouterPublic());
     app.use('/contact',contactRouterPublic());
     app.use('/reviews',reviewRouterPublic());
-    app.use('/auth',authMiddleware(),authRouter);   
-    
+    app.use('/auth',authMiddleware(),authRouter);      
   }
 }

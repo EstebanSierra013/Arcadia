@@ -10,6 +10,7 @@ import { enumRols } from "../helpers/enumRols.js";
 export function habitatRouterPrivated(){
   const habitatRouter = Router();
   habitatRouter.get('/',authMiddleware([enumRols.Administrateur,enumRols.Vétérinaire]),HabitatController.getAll);
+  habitatRouter.get('/:id',authMiddleware([enumRols.Administrateur,enumRols.Vétérinaire]),HabitatController.getOne);
   habitatRouter.post('/',authMiddleware([enumRols.Administrateur]),validateData(habitatSchema),imageHandle(),HabitatController.create);
   habitatRouter.delete('/:ids',authMiddleware([enumRols.Administrateur]),HabitatController.delete);
   habitatRouter.post('/:id',authMiddleware([enumRols.Administrateur,enumRols.Vétérinaire]),validateData(habitatSchema),imageHandle(),HabitatController.update);
@@ -19,7 +20,7 @@ export function habitatRouterPrivated(){
 export function habitatRouterPublic(){  
   const habitatRouter = Router();
   habitatRouter.get('/',authMiddleware(),HabitatController.renderHabitat);
-  habitatRouter.get('/:id',authMiddleware(),AnimalController.getAllByHabitat, HabitatController.getOne);
+  habitatRouter.get('/:id',authMiddleware(),AnimalController.getAllByHabitat, HabitatController.renderOneHabitat);
   return habitatRouter;
 }
 
