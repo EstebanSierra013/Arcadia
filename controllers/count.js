@@ -1,24 +1,24 @@
-import dbArcadiaNo from "../database/dbNo.js";
 import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
-import { enumFunctionbyRol } from "../helpers/enumRols.js";
+import { CountModel } from "../models/count.js";
 
 export class CountController {
-  static async getAll(req, res) {
+  static async sortAll(req, res) {
     try{
-      const collection = await dbArcadiaNo.connect();
-      const clicks = collection.find();
-      res.status(201).json( { clicks })
+      const rank = await CountModel.sortAll();
+      if(!rank.length) {
+        throw new NotFoundException("Rank null");
+      }
+      res.status(201).json({ rank })
     } catch (err){
       res.status(404).json({... err})
     }
   }
 
   static async save(req, res) {
-    const click = {clickTime: new Date()};
+    const { animal } = req.params;
     try{
-      const collection = await dbArcadiaNo.connect();
-      const result = await collection.insertOne(click)
-      res.status(201).json({message: result})
+      const {result} = CountModel.save( animal )
+      res.status(201).json({ message: "Click saved: " + result});
     }catch(err){
       res.status(404).json({... err})
     }    

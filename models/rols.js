@@ -1,6 +1,6 @@
 import dbArcadia from "../database/db.js";
 
-export class RolerModel {
+export class RolModel {
   static async getAll(){
     try{
       const roles = await dbArcadia.query(`

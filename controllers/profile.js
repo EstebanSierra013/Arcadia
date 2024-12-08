@@ -1,9 +1,6 @@
 import { UserModel } from "../models/user.js";
-import { enumFunctionbyRol, enumPathbyRol } from "../helpers/enumRols.js";
-import { ServiceModel } from "../models/service.js";
-import { ReviewModel } from "../models/review.js";
-import { ReportModel } from "../models/reports.js";
-import { HabitatModel } from "../models/habitat.js";
+import { enumPathbyRol } from "../helpers/enumRols.js";
+import { CountModel } from "../models/count.js";
 import { AnimalModel } from "../models/animal.js";
 
 export class ProfileController {
@@ -19,7 +16,21 @@ export class ProfileController {
       if(req.session.user){
         isLogged = true;
       }
-      res.render("pages/profile", { user , paths, isLogged}); 
+      
+      let rankAnimal = [];
+      if(rol == 'admin'){        
+        const rank = await CountModel.rankAll();
+        if(!rank.length) {
+          throw new NotFoundException("Rank null");
+        }
+        for(let i = 0; i < rank.slice(0,3).length ;i++){
+          const name = rank[i].name 
+          const animal = await AnimalModel.getOneByName({ name });
+          rankAnimal.push(animal[0]);
+        }
+        console.log(rankAnimal)
+      }      
+      res.render("pages/profile", { user , paths, rankAnimal, isLogged}); 
     } catch (err){
       console.log(err)
       res.status(404).json({... err})

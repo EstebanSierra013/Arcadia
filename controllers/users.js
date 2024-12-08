@@ -1,6 +1,6 @@
 import { NotFoundException, UpdateFailedException } from "../helpers/customExceptions.js";
 import { enumFunctionbyRol } from "../helpers/enumRols.js";
-import { RolerModel } from "../models/roles.js";
+import { RolModel } from "../models/rols.js";
 import { UserModel } from "../models/user.js";
 import bcrypt from 'bcryptjs';
 
@@ -8,11 +8,11 @@ export class UserController {
   static async getAll(req, res) {
     try{
       const users = await UserModel.getAll();
-      const roles = await RolerModel.getAll();
+      const roles = await RolModel.getAll();
       if(!users.length) {
         throw new NotFoundException("User not found");
       }
-      const details= {
+      let details= {
         name: "Utilisateurs",
         en_name: "users",
         url: req.originalUrl,

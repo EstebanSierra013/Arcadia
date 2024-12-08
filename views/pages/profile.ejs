@@ -32,6 +32,13 @@
           <% }) %> 
         </div>   
       </div>
+      <% if(user.en_rol == "admin") {%>
+        <div class="d-flex flex-column p-5 gap-4 gestion-container">
+          <% rankAnimal.forEach(function(animal){ %>
+            <%- include('../partials/card-list-animals', { objet: animal }); %>
+          <% }); %>  
+        </div>        
+      <% } %>  
     </main>      
     <footer>
       <%- include('../partials/footer'); %>

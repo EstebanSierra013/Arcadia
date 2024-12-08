@@ -1,4 +1,4 @@
-async function handleFormDataAsJson({ url, formData }) {
+async function handleFormDataAsJson({ url, formData=""}) {
 	const plainFormData = Object.fromEntries(formData.entries());
 	const formDataJsonString = JSON.stringify(plainFormData);
 	
@@ -86,7 +86,6 @@ async function handleFetchEdit(event) {
 }
 
 function handleFormEdit(data,url){
-	console.log(url)
 	for(const [key, value] of Object.entries(data)){
 		document.getElementById(key).value = value;
 	}
@@ -110,8 +109,7 @@ async function handleFetchGet(event) {
 		if (!response.ok) {
 			const errorMessage = await response.text();
 			throw new Error(errorMessage);
-		}		
-		
+		}				
 	}catch(err){
 		window.location.reload();
 		console.log(err)
@@ -119,12 +117,26 @@ async function handleFetchGet(event) {
 }
 
 async function showInfo(event){
-	event.preventDefault();
-	
+	event.preventDefault();	
 	const button = event.currentTarget;
   const name = button.id;
+	const url = button.href + "/" + name;
+	console.log(url)
 
-	console.log(name)
+	const fetchOptions = {
+		method: "POST"
+	};
+
+	try{
+		const response = await fetch(url, fetchOptions);
+
+		if (!response.ok) {
+			const errorMessage = await response.text();
+			throw new Error(errorMessage);
+		}		
+	}catch(err){
+		console.log(err)
+	}
 
 	document.getElementById(`${name}-info`).style.display = "block";
 }

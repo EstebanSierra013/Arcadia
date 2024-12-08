@@ -7,7 +7,7 @@ import { listRols } from "../helpers/enumRols.js";
 import { contactRouterPublic } from "../routers/contact.js";
 import { reviewRouterPublic } from "../routers/reviews.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { counterRouter } from "../routers/counter.js"
+import { countRouter } from "../routers/count.js"
   
 export class RouterLoader {
   
@@ -20,6 +20,6 @@ export class RouterLoader {
     app.use('/contact',contactRouterPublic());
     app.use('/reviews',reviewRouterPublic());
     app.use('/auth',authMiddleware(),authRouter); 
-    app.use('/click',counterRouter);
+    app.use('/click',countRouter);
   }
 }

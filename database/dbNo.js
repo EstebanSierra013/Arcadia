@@ -19,7 +19,7 @@ class DBServerMongo {
     try{
       await this.client.connect();      
       const db = this.client.db(process.env.DB_DATABASE);  
-      return db.collection(process.env.DB_COLLECTION);      
+      return db;
     } catch (err) {      
       this.client.close();
       throw new DatabaseException(err.message)

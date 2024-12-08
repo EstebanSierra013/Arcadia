@@ -15,6 +15,22 @@ export class AnimalModel {
     }
   }
 
+  static async getOneByName({ name }){
+    try{
+      const animal = await dbArcadia.query(`SELECT 
+        A.animal_id as Id, A.name as Nom, A.species as Race, A.status as Status, 
+        I.image_path as Image, H.habitat_id as Habitat
+        FROM animal A LEFT JOIN image I  ON A.image_id = I.image_id 
+        LEFT JOIN habitat H ON A.habitat_id = H.habitat_id
+        WHERE A.name = ?;`,
+        [name]  
+      );
+      return animal;
+    }catch(err){
+      throw err;
+    }
+  }
+
   static async getAllByHabitat({ habitat_id }){
     try{
       const animals = await dbArcadia.query(
