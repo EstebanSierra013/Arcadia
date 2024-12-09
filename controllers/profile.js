@@ -28,7 +28,6 @@ export class ProfileController {
           const animal = await AnimalModel.getOneByName({ name });
           rankAnimal.push(animal[0]);
         }
-        console.log(rankAnimal)
       }      
       res.render("pages/profile", { user , paths, rankAnimal, isLogged}); 
     } catch (err){

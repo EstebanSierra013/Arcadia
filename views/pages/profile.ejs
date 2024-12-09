@@ -26,7 +26,7 @@
       </div>     
       <div class="d-flex flex-column gap-3 align-items-xl-center flux">
         <h3 class="text-center">Gestion</h3>
-        <div class="d-flex gap-2 justify-content-lg-center buttons-gestion-container">
+        <div class="d-flex gap-2 p-2 justify-content-lg-center buttons-gestion-container">
           <% paths.forEach(function(path){ %>
           <a href= "<%= user.en_rol %>/<%= path.toLowerCase() %>" class="btn btn-arcadia-gestion" id="<%= user.en_rol %>-<%=path%>-l"><%= path %></a> 
           <% }) %> 
