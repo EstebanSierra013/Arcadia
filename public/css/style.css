@@ -153,13 +153,13 @@ main{
 
 .list-reviews-container-index{
   background-color: var(--light-yellow-color);
-  color: var(--dark-blue-color);
-  
+  color: var(--dark-blue-color);  
 }
 
 .scroll-container{
   height: 80vh;
   overflow-y: scroll;
+  width: 80%;
 }
 
 /* PAGE HABITATS */
@@ -332,8 +332,7 @@ footer{
   }
 
   .scroll-container{
-    height: 80vh;
-    overflow-y: scroll;
+    width: 65%;
   }
 
   .card-list-services img {  
@@ -367,12 +366,11 @@ footer{
   .banner-habitats-container-index{
     height: 40vh;
   }
-
 }
 
 @media only screen and (min-width: 1200px) {
   .flux{
-    padding: 8rem 20rem;
+    padding: 8rem 15rem;
   }
 
   .banner{
@@ -385,5 +383,9 @@ footer{
 
   .btn-arcadia-p, .btn-arcadia-s{
     width: 20%;
+  }
+
+  .scroll-container{
+    width: 100%;
   }
 }

@@ -11,6 +11,7 @@ async function handleFormDataAsJson({ url, formData=""}) {
 		body: formDataJsonString
 	};
 	
+	console.log(plainFormData)
 	try{
 		const response = await fetch(url, fetchOptions);
 
