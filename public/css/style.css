@@ -241,6 +241,16 @@ main{
   overflow-x: scroll;
 }
 
+/* GESTION - TOP ANIMALS */
+
+.card-top{
+  flex-direction: column;
+  background-color: transparent;
+  border-color: var(--green-color);
+  height: auto;
+  width: 50%;
+}
+
 /* GESTION - TABLE */
 
 .gestion-container{
@@ -332,6 +342,10 @@ footer{
 
   .card-list:hover{
     transform: scale(1.05);  
+  }
+ 
+  .card-top{
+    width: 30%;
   }
 
   .btn-arcadia-p{

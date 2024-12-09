@@ -32,13 +32,19 @@
           <% }) %> 
         </div>   
       </div>
+      <div>        
       <% if(user.en_rol == "admin") {%>
-        <div class="d-flex flex-column p-5 gap-4 gestion-container">
-          <% rankAnimal.forEach(function(animal){ %>
-            <%- include('../partials/card-list-animals', { objet: animal }); %>
-          <% }); %>  
+        <div class="d-flex flex-column align-items-center p-5 gap-4 reviews-container-index text-center">
+          <h3>Les Stars d'Arcadia</h3>
+          <p>Découvrez les 3 animaux préférés de nos visiteurs</p>
+          <div class="d-flex flex-column flex-md-row flex-md-wrap">
+            <% rankAnimal.forEach(function(animal){ %>
+              <%- include('../partials/card-list-top', { objet: animal, rankNumber: rankAnimal.indexOf(animal)+1 }); %>
+            <% }); %>  
+          </div>          
         </div>        
-      <% } %>  
+      <% } %> 
+      </div>     
     </main>      
     <footer>
       <%- include('../partials/footer'); %>
