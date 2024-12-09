@@ -5,8 +5,8 @@ import { enumFunctionbyRol } from "../helpers/enumRols.js";
 
 export class ServiceController {
   static async getAll(req, res) {
-    try{
-      const services = await ServiceModel.getAll();
+    try{      
+      const services = await ServiceModel.getAll();      
       if(!services.length) {
         throw new NotFoundException("Service not found");
       }
@@ -14,15 +14,13 @@ export class ServiceController {
         name: "Services",
         en_name: "services",
         url: req.originalUrl,
-        rol: req.session.service.rol
+        rol: req.session.user.rol
       }
-      const functions = enumFunctionbyRol[req.session.service.rol];
+      const functions = enumFunctionbyRol[req.session.user.rol];
       let isLogged = false;
-
-      if(req.session.service){
+      if(req.session.user){
         isLogged = true;
       }
-      
       res.status(201).render("pages/gestion", { objets: services, details, functions, isLogged})
     } catch (err){
       res.status(404).json({... err})

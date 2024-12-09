@@ -22,7 +22,6 @@ export class HabitatController {
       if(req.session.user){
         isLogged = true;
       }
-
       const functions = enumFunctionbyRol[req.session.user.rol];
       res.status(201).render("pages/gestion", { objets: habitats, details, functions, isLogged})
     } catch (err){

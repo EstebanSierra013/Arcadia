@@ -40,19 +40,22 @@
   <% break;
   case 'services' : %>
   <div class="form-floating mb-3">    
-    <input type="text" id="name" class="form-control" placeholder="Nom" required>
+    <input type="text" name="name" class="form-control" placeholder="Nom" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
     <label for="name" class="form-label">Nom</label>
   </div>
   <div class="form-floating mb-3">    
-    <textarea type="text" id="description" class="form-control" rows="3" placeholder="Description" required></textarea>
+    <textarea type="text" name="description" class="form-control" rows="3" placeholder="Description" required></textarea>
     <label for="description" class="form-label">Description</label>
   </div>
   <div class="form-floating mb-3">    
-    <input type="time" id="schedule" class="form-control" placeholder="00:00">
+    <input type="time" name="schedule" class="form-control" placeholder="00:00" required>
     <label for="schedule" class="form-label">Horaire</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="number" id="duration" class="form-control" placeholder="30">
+    <input type="number" name="duration" class="form-control" placeholder="30">
     <label for="duration" class="form-label">Duration (minutes) </label>
   </div>
   <div class="form-floating mb-3">    

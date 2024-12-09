@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/reviews" onsubmit="handleFormSubmit(event)">
+        <form action="/reviews" class="needs-validation" novalidate onsubmit="handleFormSubmit(event)">
           <div class="form-floating mb-3">            
             <input type="text" name="pseudo" class="form-control" placeholder="Pseudo">
             <label for="Pseudo" class="form-label">Pseudo</label>
@@ -16,7 +16,7 @@
             <label for="Comment" class="form-label">Comment</label>            
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-arcadia-p mt-5" data-bs-dismiss="modal">Envoyer</button>
+            <button type="submit" class="btn btn-arcadia-p mt-5">Envoyer</button>
           </div>    
         </form>
       </div>
