@@ -31,6 +31,19 @@ export class AnimalController {
     }
   }
 
+  static async getOne(req, res) {
+    const { id } = req.params;
+    try{
+      const animal = await AnimalModel.getOne({animal_id: id});
+      if(!animal.length) {
+        throw new NotFoundException("Animal not found");
+      }
+      res.status(201).json({ objet: animal})
+    } catch (err){
+      res.status(404).json({... err})
+    }
+  }
+
   static async getAllByHabitat(req, res, next) {
     const { id } = req.params
     try{

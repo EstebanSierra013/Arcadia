@@ -24,6 +24,54 @@ async function handleFormDataAsJson({ url, formData=""}) {
 	}
 }
 
+function handleFormEdit(data,url){
+	const form = document.getElementById("form-gestion")
+	for(const [key, value] of Object.entries(data)){
+		if(document.getElementById(key)){
+			switch(key){
+				case "Id":
+					break
+
+				case "Date":
+					const date = new Date(value);
+					document.getElementById(key).value = date.toISOString().substring(0,10);
+					break
+
+				case "Habitat":					
+					document.getElementById(key).selectedIndex = value;					
+					break
+
+				case "Animal":					
+					document.getElementById(key).selectedIndex = value;					
+					break
+
+				case "Role_id":
+					document.getElementById(key).value = value;	
+					if(value == 1){					
+						let select = document.getElementById(key);
+						let opt = document.createElement('option')
+						opt.value = value
+						opt.innerHTML = "Administrateur"
+						select.appendChild(opt);						
+						document.getElementById(key).value = value;	
+						document.getElementById(key).readOnly = true;
+						break
+					}
+					document.getElementById(key).disabled= false;
+					break
+
+				case "Username":
+					document.getElementById(key).readOnly = true;
+					document.getElementById("Password").disabled= true;
+
+				default:
+					document.getElementById(key).value = value;
+			}			
+		}		
+	}
+	form.action = url;
+}
+
 async function handleFormSubmit(event) {
   event.preventDefault();
 	
@@ -80,16 +128,8 @@ async function handleFetchEdit(event) {
 		const { objet } = await response.json();
 		handleFormEdit(objet[0],url)
 	}catch(err){
-		window.location.reload();
 		console.log(err)
 	}
-}
-
-function handleFormEdit(data,url){
-	for(const [key, value] of Object.entries(data)){
-		document.getElementById(key).value = value;
-	}
-	document.getElementById("form-gestion").action = url;
 }
 
 async function handleFetchGet(event) {
@@ -105,7 +145,6 @@ async function handleFetchGet(event) {
 
 	try{
 		const response = await fetch(url,fetchOptions);		
-		console.log(response)
 		if (!response.ok) {
 			const errorMessage = await response.text();
 			throw new Error(errorMessage);

@@ -9,13 +9,13 @@ export const serviceSchema = z.object({
   name: z.string().min(5, { message: "Must be 5 or more characters long" }),
   description: z.string().min(10),
   schedule: z.string().nullable(),
-  duration: z.string().transform((value) => (value == '' ? null : value)).nullable().transform((value) => (value === null ? null : Number(value)))
+  duration: z.string().transform((value) => (value == '' ? null : value)).nullable().transform((value) => (value === null ? null : Number(value))),
+  image_path: z.nullable()
 })
 
 export const userSchema = z.object({
-  username: z.string().email().length(5),
-  password: z.string().min(process.env.MIN_PASSWORD_LENGTH),
-  name: z.string().length(5),
+  username: z.string().email().min(5),
+  name: z.string().min(5),
   lastname: z.string().min(5),
   rol_id: z.coerce.number()
 })
@@ -29,7 +29,6 @@ export const habitatSchema = z.object({
   name: z.string().min(5),
   description: z.string().min(10),
   habitat_comment: z.string(),
-  image_path: z.string().nullable()
 }).partial({ habitat_comment: true })
 
 export const reviewSchema = z.object({
@@ -49,6 +48,14 @@ export const animalSchema = z.object({
   name: z.string().min(5),
   species: z.string().min(5),
   habitat_id: z.coerce.number().positive().nullable(),
-  image_path: z.string().nullable(),
   status: z.number().nullish()
 })
+
+export const reportSchema = z.object({
+  date: z.string().date(),
+  status: z.coerce.number().max(10).positive().nullable(),
+  food: z.string().min(5),
+  quantity: z.coerce.number().positive().nullable(),
+  created_by: z.string().email().min(5),
+  animal_id: z.coerce.number().positive().nullable(),
+}).partial({ status: true })

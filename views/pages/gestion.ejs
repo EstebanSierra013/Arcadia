@@ -24,7 +24,11 @@
             <% }; %> 
             <%- include('modal-create', { details, functions }); %> 
           </div>
-          <%- include('../partials/table-gestion', { objets, details }); %>
+          <% if(details.en_name == "reports") {%> 
+            <%- include('../partials/table-gestion', { objets: objets[details.rol  + "_reports"], details }); %>
+          <% } else { %> 
+            <%- include('../partials/table-gestion', { objets, details }); %>
+          <% }; %>           
         </div>                
       </div>
     </main>      

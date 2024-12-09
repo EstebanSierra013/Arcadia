@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row p-0">
     <div class="col-lg-12 p-0">
-      <div class="table-responsive">
+      <div class="table-responsive table-scroll-Y">
         <table class="table table-stripped text-center">
           <thead>
             <tr class="table-dark">
@@ -15,10 +15,25 @@
           <tbody>
             <% objets.forEach(function(objet){ %>       
             <tr>
-            <% for(const [key, value] of Object.entries(objet)){ %>                        
-              <%if(key=="Image"){ %>
+            <% for(const [key, value] of Object.entries(objet)){ %>    
+              <% if(key=="Image"){ %>
                 <td><img src="<%= value %>" class="img-thumbnail" alt="Image <%= objet.name%>"></td>
-              <% }else{ %>               
+              <% }else if(key=="Habitat"){ %>
+                <% let res = details.table.filter((item) => {
+                  return item.Id == value;
+                });
+                let habitat_name = res[0]["Nom"];%>
+                <td><%= habitat_name %></td>
+              <% }else if(key=="Animal"){ %>
+                <% let res = details.table.filter((item) => {
+                  return item.Id == value;
+                });
+                let animal_name = res[0]["Nom"];%>
+                <td><%= animal_name %></td>
+              <% }else if(key=="Date"){ %>
+                <% const date = new Date(value);%>
+                <td><%=date.toISOString().substring(0,10);%></td>               
+              <% }else{ %>              
                 <td><%= value %></td>
               <% }; %>
               <% }; %>

@@ -16,7 +16,7 @@ export class UserModel {
   static async getOne({ username }){
     try{
       const user = await dbArcadia.query(`SELECT 
-        U.username as Username, U.name as Prenom, U.lastname as Nom, U.password, R.rol_name as Role
+        U.username as Username, U.name as Prenom, U.lastname as Nom, U.password, R.rol_name as Role, R.rol_id as Role_id
         FROM user U LEFT JOIN rol R ON U.rol_id = R.rol_id
         WHERE U.username = ?;`,
         [username]
