@@ -16,6 +16,7 @@ export const serviceSchema = z.object({
 export const userSchema = z.object({
   username: z.string().email().min(5),
   name: z.string().min(5),
+  password: z.string().min(process.env.MIN_PASSWORD_LENGTH),
   lastname: z.string().min(5),
   rol_id: z.coerce.number()
 })

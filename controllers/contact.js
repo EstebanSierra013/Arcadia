@@ -1,5 +1,6 @@
 import { ContactModel } from "../models/contact.js";
 import { UpdateFailedException, NotFoundException } from "../helpers/customExceptions.js";
+import { enumFunctionbyRol } from "../helpers/enumRols.js";
 
 export class ContactController {
 
@@ -22,7 +23,22 @@ export class ContactController {
       if(!contacts.length) {
         throw new NotFoundException("Contact not found");
       }
-      res.status(201).json({ contacts });
+      const details= {
+        name: "Contact",
+        en_name: "contact",
+        url: req.originalUrl,
+        rol: req.session.user.rol,  
+      }
+
+      const functions = enumFunctionbyRol[req.session.user.rol];
+      let isLogged = false;
+
+      if(req.session.user){
+
+        isLogged = true;
+      }
+
+      res.status(201).render("pages/gestion", { objets: contacts, details, functions, isLogged})
     } catch (err){
       res.status(404).json({... err})
     }

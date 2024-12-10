@@ -1,6 +1,7 @@
 import dbArcadia from "../database/db.js";
 
 export class ReviewModel {
+  
   static async getAll(params = {}){
     try{            
       const sql_filter = Object.keys(params).length ? `WHERE isVisible = ${params.isVisible}` :  "";

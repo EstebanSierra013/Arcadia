@@ -20,9 +20,18 @@ export class ReportModel {
   }
 
   static async getAllByRol({ rol }){
+    let sql_statement = ""
+    if(rol == 'veterinary'){
+      sql_statement = `SELECT R.veterinary_report_id as Id, R.date as Date, R.status as État, R.food as Nourriture,
+          R.quantity as Quantité, R.created_by as Utilisateur, R.animal_id as Animal FROM veterinary_report R
+          ORDER BY veterinary_report_id DESC;`
+    }else{
+      sql_statement = `SELECT R.employee_report_id as Id, R.date as Date, R.food as Nourriture, 
+          R.quantity as Quantité, R.created_by as Utilisateur, R.animal_id as Animal FROM employee_report R
+          ORDER BY employee_report_id DESC;`
+    }
     try{
-      const reports = await dbArcadia.query(
-        `SELECT * FROM ${rol}_report ORDER BY ${rol}_report_id DESC;`);
+      const reports = await dbArcadia.query(sql_statement);
       return reports;
     }catch(err){
       throw err;

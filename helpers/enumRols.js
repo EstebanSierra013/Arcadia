@@ -33,7 +33,7 @@ export const enumFunctionbyRol = {
   employee: {
     reviews: "validate", 
     services: "all",
-    reports: " all",
+    reports: "all",
     contact: "validate",
   }
 }

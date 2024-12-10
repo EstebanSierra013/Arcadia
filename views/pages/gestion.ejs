@@ -24,11 +24,17 @@
             <% }; %> 
             <%- include('modal-create', { details, functions }); %> 
           </div>
-          <% if(details.en_name == "reports") {%> 
-            <%- include('../partials/table-gestion', { objets: objets[details.rol  + "_reports"], details }); %>
-          <% } else { %> 
-            <%- include('../partials/table-gestion', { objets, details }); %>
-          <% }; %>           
+          <% if(objets.length || objets != undefined) {%>
+            <% if(details.en_name == "reports") {%>
+              <% if(details.rol == "admin") {%>
+                <%- include('../partials/table-gestion', { objets, details }); %>
+              <% } else {%> 
+                <%- include('../partials/table-gestion', { objets: objets[details.rol  + "_reports"], details }); %>
+              <% }; %>  
+            <% } else { %> 
+              <%- include('../partials/table-gestion', { objets, details }); %>
+            <% }; %>      
+          <% }; %>        
         </div>                
       </div>
     </main>      

@@ -10,7 +10,7 @@ async function handleFormDataAsJson({ url, formData=""}) {
 		},
 		body: formDataJsonString
 	};
-	
+	console.log(formDataJsonString)
 	try{
 		const response = await fetch(url, fetchOptions);
 
@@ -148,7 +148,8 @@ async function handleFetchGet(event) {
 		if (!response.ok) {
 			const errorMessage = await response.text();
 			throw new Error(errorMessage);
-		}				
+		}
+		window.location.reload();				
 	}catch(err){
 		window.location.reload();
 		console.log(err)
